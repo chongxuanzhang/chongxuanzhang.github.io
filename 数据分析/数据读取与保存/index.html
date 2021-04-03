@@ -23,6 +23,10 @@
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
         
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
       
     
     
@@ -48,7 +52,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="light-blue">
       
   
     
@@ -379,15 +383,15 @@
               
                 
                 
-                <h1 id="_1">数据读取与保存</h1>
+                <h1 id="_1">数据读取与保存<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>主要用到的是<code>pandas库</code>，可以通过<code>pip install pandas</code>进行安装；使用时通过<code>import pandas as pd</code>导入（以pd作为别名）；<code>pandas</code>能读取的文件类型很多，这里主要介绍对<code>csv、excel</code>文件的读取和保存；更多功能可查阅<a href="https://pandas.pydata.org/docs/index.html">官方文档</a>。</p>
-<h2 id="-excel">读取与保存-excel文件</h2>
+<h2 id="-excel">读取与保存-excel文件<a class="headerlink" href="#-excel" title="Permanent link">&para;</a></h2>
 <p>需要通过pip命令安装<code>openpyxl</code>与<code>xlrd</code>：
     <code>pip install openpyxl</code> <code>pip install xlrd</code> </p>
-<h3 id="excel-read_excel">读取excel文件 <code>read_excel</code></h3>
-<pre><code>pandas.read_excel(io, sheet_name=0, header=0, names=None, index_col=None, usecols=None, squeeze=False, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skiprows=None, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, parse_dates=False, date_parser=None, thousands=None, comment=None, skipfooter=0, convert_float=True, mangle_dupe_cols=True, storage_options=None)
-</code></pre>
-<p>常用参数介绍：  </p>
+<h3 id="excel-read_excel">读取excel文件 <code>read_excel</code><a class="headerlink" href="#excel-read_excel" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>pandas.read_excel(io, sheet_name=0, header=0, names=None, index_col=None, usecols=None, squeeze=False, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skiprows=None, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, parse_dates=False, date_parser=None, thousands=None, comment=None, skipfooter=0, convert_float=True, mangle_dupe_cols=True, storage_options=None)
+</code></pre></div>
+常用参数介绍：  </p>
 <table>
 <thead>
 <tr>
@@ -422,6 +426,49 @@
 </tr>
 </tbody>
 </table>
+<p>基础用法：<br />
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;path_to_file.xls或.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">)</span> 
+<span class="c1"># 文件路径和sheet_name根据自己文件内容修改（下同）</span>
+</code></pre></div>
+Excelfile类：<br />
+读取一个excel文件的多张工作表时，利用该类能够一次读取到内存。
+<div class="highlight"><pre><span></span><code><span class="n">xlsx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s2">&quot;path_to_file.xls或.xlsx&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xlsx</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
+</code></pre></div>
+<code>或者</code>
+<div class="highlight"><pre><span></span><code>with pd.ExcelFile(&quot;path_to_file.xls&quot;) as xls:
+    df1 = pd.read_excel(xls, &quot;Sheet1&quot;)
+    df2 = pd.read_excel(xls, &quot;Sheet2&quot;)
+</code></pre></div>
+<code>对不同工作表传不同参数</code>
+<div class="highlight"><pre><span></span><code>data = {}
+# For when Sheet1&#39;s format differs from Sheet2
+with pd.ExcelFile(&quot;path_to_file.xls&quot;) as xls:
+    data[&quot;Sheet1&quot;] = pd.read_excel(xls, &quot;Sheet1&quot;, index_col=None, na_values=[&quot;NA&quot;])
+    data[&quot;Sheet2&quot;] = pd.read_excel(xls, &quot;Sheet2&quot;, index_col=1)
+</code></pre></div>
+<code>如果不同工作表传的参数相同，ExcelFile方式相当于read_excel函数</code>
+<div class="highlight"><pre><span></span><code>data = {}
+with pd.ExcelFile(&quot;path_to_file.xls&quot;) as xls:
+    data[&quot;Sheet1&quot;] = pd.read_excel(xls, &quot;Sheet1&quot;, index_col=None, na_values=[&quot;NA&quot;])
+    data[&quot;Sheet2&quot;] = pd.read_excel(xls, &quot;Sheet2&quot;, index_col=None, na_values=[&quot;NA&quot;])
+
+# equivalent using the read_excel function
+data = pd.read_excel(
+    &quot;path_to_file.xls&quot;, [&quot;Sheet1&quot;, &quot;Sheet2&quot;], index_col=None, na_values=[&quot;NA&quot;])
+</code></pre></div>
+解析日期：<br />
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;path_to_file.xls&quot;</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date_strings&quot;</span><span class="p">])</span>
+</code></pre></div>
+指定索引：<br />
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;path_to_file.xls&quot;</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;列名&#39;</span><span class="p">)</span><span class="c1"># index_col默认值是None</span>
+</code></pre></div></p>
+<blockquote>
+<ul>
+<li>更多参数介绍，请查阅<a href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html#pandas.read_excel">pandas.read_excel</a>。</li>
+</ul>
+</blockquote>
                 
               
               
