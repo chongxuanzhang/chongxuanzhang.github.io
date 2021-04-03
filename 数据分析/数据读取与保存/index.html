@@ -271,6 +271,40 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#excel-to_excel" class="md-nav__link">
+    保存到excel文件 to_excel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    案例
+  </a>
+  
+    <nav class="md-nav" aria-label="案例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    读取数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    保存数据
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -365,6 +399,40 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#excel-to_excel" class="md-nav__link">
+    保存到excel文件 to_excel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    案例
+  </a>
+  
+    <nav class="md-nav" aria-label="案例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    读取数据
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    保存数据
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -383,12 +451,12 @@
               
                 
                 
-                <h1 id="_1">数据读取与保存<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+                <h1 id="_1"><strong>数据读取与保存</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>主要用到的是<code>pandas库</code>，可以通过<code>pip install pandas</code>进行安装；使用时通过<code>import pandas as pd</code>导入（以pd作为别名）；<code>pandas</code>能读取的文件类型很多，这里主要介绍对<code>csv、excel</code>文件的读取和保存；更多功能可查阅<a href="https://pandas.pydata.org/docs/index.html">官方文档</a>。</p>
-<h2 id="-excel">读取与保存-excel文件<a class="headerlink" href="#-excel" title="Permanent link">&para;</a></h2>
+<h2 id="-excel"><strong>读取与保存-excel文件</strong><a class="headerlink" href="#-excel" title="Permanent link">&para;</a></h2>
 <p>需要通过pip命令安装<code>openpyxl</code>与<code>xlrd</code>：
     <code>pip install openpyxl</code> <code>pip install xlrd</code> </p>
-<h3 id="excel-read_excel">读取excel文件 <code>read_excel</code><a class="headerlink" href="#excel-read_excel" title="Permanent link">&para;</a></h3>
+<h3 id="excel-read_excel"><strong>读取excel文件 <code>read_excel</code></strong><a class="headerlink" href="#excel-read_excel" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code>pandas.read_excel(io, sheet_name=0, header=0, names=None, index_col=None, usecols=None, squeeze=False, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skiprows=None, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, parse_dates=False, date_parser=None, thousands=None, comment=None, skipfooter=0, convert_float=True, mangle_dupe_cols=True, storage_options=None)
 </code></pre></div>
 常用参数介绍：  </p>
@@ -437,26 +505,26 @@ Excelfile类：<br />
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xlsx</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
 </code></pre></div>
 <code>或者</code>
-<div class="highlight"><pre><span></span><code>with pd.ExcelFile(&quot;path_to_file.xls&quot;) as xls:
-    df1 = pd.read_excel(xls, &quot;Sheet1&quot;)
-    df2 = pd.read_excel(xls, &quot;Sheet2&quot;)
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s2">&quot;path_to_file.xls&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">xls</span><span class="p">:</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xls</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
+    <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xls</span><span class="p">,</span> <span class="s2">&quot;Sheet2&quot;</span><span class="p">)</span>
 </code></pre></div>
 <code>对不同工作表传不同参数</code>
-<div class="highlight"><pre><span></span><code>data = {}
-# For when Sheet1&#39;s format differs from Sheet2
-with pd.ExcelFile(&quot;path_to_file.xls&quot;) as xls:
-    data[&quot;Sheet1&quot;] = pd.read_excel(xls, &quot;Sheet1&quot;, index_col=None, na_values=[&quot;NA&quot;])
-    data[&quot;Sheet2&quot;] = pd.read_excel(xls, &quot;Sheet2&quot;, index_col=1)
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1"># For when Sheet1&#39;s format differs from Sheet2</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s2">&quot;path_to_file.xls&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">xls</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xls</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NA&quot;</span><span class="p">])</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Sheet2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xls</span><span class="p">,</span> <span class="s2">&quot;Sheet2&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <code>如果不同工作表传的参数相同，ExcelFile方式相当于read_excel函数</code>
-<div class="highlight"><pre><span></span><code>data = {}
-with pd.ExcelFile(&quot;path_to_file.xls&quot;) as xls:
-    data[&quot;Sheet1&quot;] = pd.read_excel(xls, &quot;Sheet1&quot;, index_col=None, na_values=[&quot;NA&quot;])
-    data[&quot;Sheet2&quot;] = pd.read_excel(xls, &quot;Sheet2&quot;, index_col=None, na_values=[&quot;NA&quot;])
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s2">&quot;path_to_file.xls&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">xls</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xls</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NA&quot;</span><span class="p">])</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Sheet2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">xls</span><span class="p">,</span> <span class="s2">&quot;Sheet2&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NA&quot;</span><span class="p">])</span>
 
-# equivalent using the read_excel function
-data = pd.read_excel(
-    &quot;path_to_file.xls&quot;, [&quot;Sheet1&quot;, &quot;Sheet2&quot;], index_col=None, na_values=[&quot;NA&quot;])
+<span class="c1"># equivalent using the read_excel function</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
+    <span class="s2">&quot;path_to_file.xls&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="s2">&quot;Sheet2&quot;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NA&quot;</span><span class="p">])</span>
 </code></pre></div>
 解析日期：<br />
 <div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;path_to_file.xls&quot;</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;date_strings&quot;</span><span class="p">])</span>
@@ -464,6 +532,25 @@ data = pd.read_excel(
 指定索引：<br />
 <div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;path_to_file.xls&quot;</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;列名&#39;</span><span class="p">)</span><span class="c1"># index_col默认值是None</span>
 </code></pre></div></p>
+<h3 id="excel-to_excel"><strong>保存到excel文件 <code>to_excel</code></strong><a class="headerlink" href="#excel-to_excel" title="Permanent link">&para;</a></h3>
+<p>要将<code>DataFrame</code>对象写入Excel文件的工作表，可以使用<code>to_excel</code>实例方法。第一个参数是excel文件的路径名称，第二个参数是要写入excel的工资表名称。例如：<br />
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;path_to_file.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">)</span>  
+</code></pre></div></p>
+<h2 id="_2"><strong>案例</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3"><strong>读取数据</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>数据为2016年世界各国二氧化碳排放量（2016world-co2.xls），数据源于<a href="https://data.worldbank.org.cn/indicator/EN.ATM.CO2E.KT?view=chart">世界银行</a></p>
+<p>文件存放在<code>C:\Users\Administrator\Desktop\2016world-co2.xls</code>,内容如下：  </p>
+<p><img alt="2016 world co2" src="../img/world_co2.png" /></p>
+<p>可以发现Excel文件有3个工作表，我们需要的数据在Data工作表中（当然也可以不传<code>sheet_name</code>参数，因为需要的数据就在第0个工作表中），另外表头为第三行（从0开始算）；为此可通过以下方式读取数据：
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># 读取2016年的数据</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\Administrator\Desktop\2016world-co2.xls&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+输出结果为：<br />
+<img alt="" src="../img/out.png" /></p>
+<h3 id="_4"><strong>保存数据</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;co2&#39;</span><span class="p">)</span><span class="c1"># 保存到当前工作目录下，文件名为data.xlsx，工作表名为co2</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li>更多参数介绍，请查阅<a href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html#pandas.read_excel">pandas.read_excel</a>。</li>
