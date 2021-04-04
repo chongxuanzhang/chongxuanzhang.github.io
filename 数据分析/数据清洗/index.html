@@ -246,9 +246,59 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          数据清洗
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         数据清洗
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    处理缺失值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    处理重复值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    处理异常值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    案例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -302,6 +352,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    处理缺失值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    处理重复值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    处理异常值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    案例
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -313,7 +399,86 @@
               
                 
                 
-                <h1 id="_1">更新中<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+                <h1 id="_1"><strong>数据清洗</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>数据处理是指将收集到的数据进行加工、整理，形成适合数据分析的样式；可以将数据处理简单的分为数据的清洗、数据的整理；数据清洗主要包括以下三个过程：</p>
+<ul>
+<li>处理缺失值</li>
+<li>处理重复值</li>
+<li>处理异常值  </li>
+</ul>
+<p>主要用到的是<code>pandas</code>库。</p>
+<h2 id="_2"><strong>处理缺失值</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>查看数据的基本信息</strong><br />
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;path_to_file.xls或.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">)</span> <span class="c1"># 以读取的excel文件为例</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span> <span class="c1"># 其中主要包括：整体数据的总行数、各列数据类型统计、各列的列名、各列总共有多少非空数据、表格占用的系统空间等</span>
+</code></pre></div>
+查看前几行可以使用<code>df.head(数字)</code>,查看后几行使用<code>df.tail(数字)</code></p>
+<p><strong>查找缺失值</strong></p>
+<p>在<code>pandas</code>里，可以使用<code>isna()</code>和<code>notna()</code>方法来查找<code>DataFrame对象</code>以及<code>Series对象</code>中的缺失值。<code>df.isna()</code>返回的是DATa Frame对象，<code>Series.isna()</code>返回的是Series对象。返回对象的内容是布尔值，缺失数据会用<code>True</code>来表示，<code>False</code>代表数据不缺失。</p>
+<p><strong>删除缺失值</strong> </p>
+<p>可以使用<code>dropna()</code>方法直接删除 DataFrame 对象和 Series 对象中含有缺失值的数据；只要执行 <code>df.dropna()</code> 这一代码方法，就可以将 DataFrame 对象中包含缺失值的每一行全部删掉。
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
+<span class="c1"># axis: 0/&#39;index&#39;：删除包含缺失值的行, 1/&#39;columns&#39;：删除包含缺失值的列 ;默认值为 0  </span>
+<span class="c1"># how: &#39;any&#39;: 如果存在任何NA值，则删除该行或列; &#39;all&#39;: 如果所有值均为NA，则删除该行或列;默认值是&#39;any&#39;</span>
+<span class="c1"># thresh: int, optional Require that many non-NA values。要保留的非NA个数</span>
+<span class="c1"># subset: 删除指定列的缺失数据[&#39;列名&#39;]</span>
+<span class="c1"># inplace: 是否就地修改</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Series</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  
+<span class="c1"># axis: 只有一个值0或者&#39;index&#39;</span>
+<span class="c1"># inplace: 是否就地修改</span>
+<span class="c1"># how: str, optional,Not in use. Kept for compatibility.</span>
+</code></pre></div></p>
+<p><strong>填充缺失数据</strong><br />
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">downcast</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">Series</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">downcast</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="c1"># value: scalar, dict, Series, or DataFrame</span>
+<span class="c1"># method: {‘backfill’, ‘bfill’, ‘pad’, ‘ffill’, None}, default None</span>
+<span class="c1"># axis: DataFrame-{0 or ‘index’, 1 or ‘columns’};Series-0 or ‘index’</span>
+<span class="c1"># inplace: bool, default False</span>
+<span class="c1"># limit: int, default None填充数量</span>
+<span class="c1"># downcast: dict, default is None</span>
+</code></pre></div></p>
+<h2 id="_3"><strong>处理重复值</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><strong>查找重复值</strong>
+可以使用<code>df.duplicated()</code>查看DataFrame对象的重复数据，返回一个Series对象，重复为True，不重复为False；使用<code>Series.duplicated()</code>查看Series的重复数据，返回一个Series对象，重复为True，不重复为False。
+也可以通过<code>df[df.duplicated()]</code>查看重复行的数据。</p>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+<span class="c1"># subset: 指定列，默认所有列</span>
+<span class="c1"># keep: {‘first’, ‘last’, False}, default ‘first’,保留第一个还是最后一个</span>
+<span class="n">Series</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>删除重复值</strong>  </p>
+<p>可以使用<code>df.drop_duplicates()</code>删除DataFrame 对象中重复出现的整行数据；使用<code>Series.drop_duplicates()</code>删除Series 对象中重复出现的整行数据。</p>
+<div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># ignore_index: bool, default False,If True, the resulting axis will be labeled 0, 1, …, n - 1 </span>
+<span class="n">Series</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_4"><strong>处理异常值</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><strong>检查、筛除异常值</strong>  </p>
+<p>使用<code>df.describe()</code>可以查看DataFrame对象的描述性统计信息，然后根据最大、最小值、平均数、中位数等信息，利用布尔索引的方式筛除异常值。比如有个记录蔬菜价格和销量的数据data，要筛除数据中价格小于0的数据，可以通过以下方式：  </p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;单价&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+<h2 id="_5"><strong>案例</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>还是以2016年世界各国二氧化碳排放量（2016world-co2.xls）的数据为例。  </p>
+<p><strong>数据的读取</strong>  </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># 读取2016年的数据</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\Administrator\Desktop\2016world-co2.xls&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>缺失值处理</strong><br />
+数据的基本信息<code>data.info()</code>  </p>
+<p><img alt="" src="../img/info.jpg" />  </p>
+<p>可以看出共有264行数据，除列'2016'外，其他数据不存在缺失。<br />
+删除缺失值（现实中，要根据业务或其他要求来决定是删除，还是填充数据）<code>data.dropna(inplace=True)</code>  并查看。  </p>
+<p><img alt="" src="../img/dropna.jpg" />  </p>
+<p><strong>重复数据处理</strong><br />
+<code>data.duplicated()</code>发现并无重复数据。  </p>
+<p><img alt="" src="../img/duplicated.jpg" />  </p>
+<p><strong>异常数据处理</strong> <br />
+<code>data.describe()</code>现实中，要根据业务或其他要求来决定是否是异常值。  </p>
+<p><img alt="" src="../img/describe.jpg" /></p>
                 
               
               
