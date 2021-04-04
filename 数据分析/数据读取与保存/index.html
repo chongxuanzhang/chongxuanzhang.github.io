@@ -266,14 +266,41 @@
         
           <li class="md-nav__item">
   <a href="#excel-read_excel" class="md-nav__link">
-    读取excel文件 read_excel
+    读取excel文件 read_excel()
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#excel-to_excel" class="md-nav__link">
-    保存到excel文件 to_excel
+    保存到excel文件 to_excel()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-csv" class="md-nav__link">
+    读取与保存-csv文件
+  </a>
+  
+    <nav class="md-nav" aria-label="读取与保存-csv文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csv-read_csv" class="md-nav__link">
+    读取csv文件 read_csv()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csv-to_csv" class="md-nav__link">
+    保存到csv文件 to_csv()
   </a>
   
 </li>
@@ -292,14 +319,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    读取数据
+  <a href="#excel" class="md-nav__link">
+    读取excel数据
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     保存数据
   </a>
   
@@ -394,14 +421,41 @@
         
           <li class="md-nav__item">
   <a href="#excel-read_excel" class="md-nav__link">
-    读取excel文件 read_excel
+    读取excel文件 read_excel()
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#excel-to_excel" class="md-nav__link">
-    保存到excel文件 to_excel
+    保存到excel文件 to_excel()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-csv" class="md-nav__link">
+    读取与保存-csv文件
+  </a>
+  
+    <nav class="md-nav" aria-label="读取与保存-csv文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csv-read_csv" class="md-nav__link">
+    读取csv文件 read_csv()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#csv-to_csv" class="md-nav__link">
+    保存到csv文件 to_csv()
   </a>
   
 </li>
@@ -420,14 +474,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    读取数据
+  <a href="#excel" class="md-nav__link">
+    读取excel数据
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     保存数据
   </a>
   
@@ -456,8 +510,8 @@
 <h2 id="-excel"><strong>读取与保存-excel文件</strong><a class="headerlink" href="#-excel" title="Permanent link">&para;</a></h2>
 <p>需要通过pip命令安装<code>openpyxl</code>与<code>xlrd</code>：
     <code>pip install openpyxl</code> <code>pip install xlrd</code> </p>
-<h3 id="excel-read_excel"><strong>读取excel文件 <code>read_excel</code></strong><a class="headerlink" href="#excel-read_excel" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>pandas.read_excel(io, sheet_name=0, header=0, names=None, index_col=None, usecols=None, squeeze=False, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skiprows=None, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, parse_dates=False, date_parser=None, thousands=None, comment=None, skipfooter=0, convert_float=True, mangle_dupe_cols=True, storage_options=None)
+<h3 id="excel-read_excel"><strong>读取excel文件 <code>read_excel()</code></strong><a class="headerlink" href="#excel-read_excel" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code><span class="n">pandas</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">squeeze</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">true_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">false_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">na_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">date_parser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thousands</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">convert_float</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mangle_dupe_cols</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
 常用参数介绍：  </p>
 <table>
@@ -532,12 +586,96 @@ Excelfile类：<br />
 指定索引：<br />
 <div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;path_to_file.xls&quot;</span><span class="p">,</span> <span class="s2">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;列名&#39;</span><span class="p">)</span><span class="c1"># index_col默认值是None</span>
 </code></pre></div></p>
-<h3 id="excel-to_excel"><strong>保存到excel文件 <code>to_excel</code></strong><a class="headerlink" href="#excel-to_excel" title="Permanent link">&para;</a></h3>
+<h3 id="excel-to_excel"><strong>保存到excel文件 <code>to_excel()</code></strong><a class="headerlink" href="#excel-to_excel" title="Permanent link">&para;</a></h3>
 <p>要将<code>DataFrame</code>对象写入Excel文件的工作表，可以使用<code>to_excel</code>实例方法。第一个参数是excel文件的路径名称，第二个参数是要写入excel的工资表名称。例如：<br />
 <div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;path_to_file.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">)</span>  
 </code></pre></div></p>
+<blockquote>
+<ul>
+<li>更多参数介绍，请查阅 <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html#pandas.read_excel">pandas.read_excel</a>。</li>
+</ul>
+</blockquote>
+<h2 id="-csv"><strong>读取与保存-csv文件</strong><a class="headerlink" href="#-csv" title="Permanent link">&para;</a></h2>
+<h3 id="csv-read_csv"><strong>读取csv文件 <code>read_csv()</code></strong><a class="headerlink" href="#csv-read_csv" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">sep</span><span class="o">=&lt;</span><span class="nb">object</span> <span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">squeeze</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mangle_dupe_cols</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">converters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">true_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">false_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">na_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skip_blank_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">infer_datetime_format</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">keep_date_col</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">date_parser</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dayfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cache_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span> <span class="n">thousands</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">lineterminator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="n">quoting</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">doublequote</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">escapechar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">warn_bad_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">memory_map</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">float_precision</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+可见<code>read_csv</code>的参数较多，使用时根据文件内容进行选择；常用的有以下几个参数：  </p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">filepath_or_buffer</td>
+<td align="center">str, path object or file-like object</td>
+</tr>
+<tr>
+<td align="center">sep</td>
+<td align="center">str, default ‘,’分隔符，默认是逗号</td>
+</tr>
+<tr>
+<td align="center">header</td>
+<td align="center">int, list of int, default ‘infer’ 表头</td>
+</tr>
+<tr>
+<td align="center">index_col</td>
+<td align="center">int, str, sequence of int / str, or False, default None 索引</td>
+</tr>
+<tr>
+<td align="center">encoding</td>
+<td align="center">str, optional 解码</td>
+</tr>
+<tr>
+<td align="center">parse_dates</td>
+<td align="center">bool or list of int or names or list of lists or dict, default False</td>
+</tr>
+</tbody>
+</table>
+<p>基础用法：
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;文件路径&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;分隔符&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;解码方式&#39;</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="csv-to_csv"><strong>保存到csv文件 <code>to_csv()</code></strong><a class="headerlink" href="#csv-to_csv" title="Permanent link">&para;</a></h3>
+<p><code>to_csv()</code>的可选参数也较多，常用的参数有：  </p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">path_or_buf</td>
+<td align="center">保存路径</td>
+</tr>
+<tr>
+<td align="center">sep</td>
+<td align="center">分隔符，默认是‘,’</td>
+</tr>
+<tr>
+<td align="center">na_rep</td>
+<td align="center">缺失值，默认是空格</td>
+</tr>
+<tr>
+<td align="center">header</td>
+<td align="center">是否带表头，默认是True</td>
+</tr>
+<tr>
+<td align="center">encoding</td>
+<td align="center">解码方式</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li>更多参数介绍，请查阅 <a href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html#pandas.read_csv">pandas.read_csv</a></li>
+</ul>
+</blockquote>
 <h2 id="_2"><strong>案例</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="_3"><strong>读取数据</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="excel"><strong>读取excel数据</strong><a class="headerlink" href="#excel" title="Permanent link">&para;</a></h3>
 <p>数据为2016年世界各国二氧化碳排放量（2016world-co2.xls），数据源于<a href="https://data.worldbank.org.cn/indicator/EN.ATM.CO2E.KT?view=chart">世界银行</a></p>
 <p>文件存放在<code>C:\Users\Administrator\Desktop\2016world-co2.xls</code>,内容如下：  </p>
 <p><img alt="2016 world co2" src="../img/world_co2.png" /></p>
@@ -548,14 +686,9 @@ Excelfile类：<br />
 </code></pre></div>
 输出结果为：<br />
 <img alt="" src="../img/out.png" /></p>
-<h3 id="_4"><strong>保存数据</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_3"><strong>保存数据</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data.xlsx&#39;</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;co2&#39;</span><span class="p">)</span><span class="c1"># 保存到当前工作目录下，文件名为data.xlsx，工作表名为co2</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li>更多参数介绍，请查阅<a href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html#pandas.read_excel">pandas.read_excel</a>。</li>
-</ul>
-</blockquote>
                 
               
               
