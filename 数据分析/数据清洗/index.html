@@ -441,8 +441,8 @@
 <span class="c1"># downcast: dict, default is None</span>
 </code></pre></div></p>
 <h2 id="_3"><strong>处理重复值</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p><strong>查找重复值</strong>
-可以使用<code>df.duplicated()</code>查看DataFrame对象的重复数据，返回一个Series对象，重复为True，不重复为False；使用<code>Series.duplicated()</code>查看Series的重复数据，返回一个Series对象，重复为True，不重复为False。
+<p><strong>查找重复值</strong>  </p>
+<p>可以使用<code>df.duplicated()</code>查看DataFrame对象的重复数据，返回一个Series对象，重复为True，不重复为False；使用<code>Series.duplicated()</code>查看Series的重复数据，返回一个Series对象，重复为True，不重复为False。
 也可以通过<code>df[df.duplicated()]</code>查看重复行的数据。</p>
 <div class="highlight"><pre><span></span><code><span class="n">DataFrame</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
 <span class="c1"># subset: 指定列，默认所有列</span>
