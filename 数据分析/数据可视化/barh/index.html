@@ -305,9 +305,92 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          条形图
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         条形图
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#matplotlib" class="md-nav__link">
+    matplotlib方法
+  </a>
+  
+    <nav class="md-nav" aria-label="matplotlib方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    条形图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    分组条形图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    堆积条形图
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seaborn" class="md-nav__link">
+    seaborn方法
+  </a>
+  
+    <nav class="md-nav" aria-label="seaborn方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    条形图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    分组条形图
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -343,6 +426,75 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#matplotlib" class="md-nav__link">
+    matplotlib方法
+  </a>
+  
+    <nav class="md-nav" aria-label="matplotlib方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    条形图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    分组条形图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    堆积条形图
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seaborn" class="md-nav__link">
+    seaborn方法
+  </a>
+  
+    <nav class="md-nav" aria-label="seaborn方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    条形图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    分组条形图
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -354,7 +506,203 @@
               
                 
                 
-                <h1 id="_1">更新中<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+                <h1 id="_1"><strong>条形图</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="c1"># 忽略错误输出</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div>
+<h2 id="matplotlib"><strong>matplotlib方法</strong><a class="headerlink" href="#matplotlib" title="Permanent link">&para;</a></h2>
+<p>数据仍使用绘制柱状图所用数据。</p>
+<div class="highlight"><pre><span></span><code><span class="n">Axes</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;BRICS.xlsx&#39;</span><span class="p">)</span>
+
+<span class="n">data_1</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Series Name&#39;</span><span class="p">,</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span><span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="mi">1990</span><span class="p">,</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2011</span><span class="p">,</span><span class="mi">2012</span><span class="p">,</span><span class="mi">2013</span><span class="p">,</span><span class="mi">2014</span><span class="p">,</span><span class="mi">2015</span><span class="p">,</span><span class="mi">2016</span><span class="p">,</span><span class="mi">2017</span><span class="p">,</span><span class="mi">2018</span><span class="p">,</span><span class="mi">2019</span><span class="p">],</span>
+                  <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;constant 2010 US$&#39;</span><span class="p">)</span>
+
+<span class="n">data_2</span> <span class="o">=</span> <span class="n">data_1</span><span class="p">[</span><span class="n">data_1</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">]</span>
+<span class="n">gdp</span> <span class="o">=</span> <span class="n">data_2</span><span class="p">[</span><span class="n">data_2</span><span class="p">[</span><span class="s1">&#39;Series Name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;GDP&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">trans</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">100000000</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">gdp</span><span class="p">[</span><span class="s1">&#39;constant 2010 US$&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdp</span><span class="p">[</span><span class="s1">&#39;constant 2010 US$&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span><span class="c1"># 转化成亿美元，便于显示</span>
+
+<span class="n">pergdp</span> <span class="o">=</span> <span class="n">data_2</span><span class="p">[</span><span class="n">data_2</span><span class="p">[</span><span class="s1">&#39;Series Name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;人均 GDP&#39;</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="_2"><strong>条形图</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><strong>金砖国家GDP条形图</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Microsoft YaHei&#39;</span><span class="p">]</span> <span class="c1"># 要显示中文，需要对字体进行设置，这里选择使用微软雅黑字体</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.autolayout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># automatically adjust subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span> <span class="c1"># 设置主题，可通过plt.style.availablel来查看更多主题</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">barh</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">gdp</span><span class="p">[</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span> <span class="c1"># x</span>
+             <span class="n">gdp</span><span class="p">[</span><span class="s1">&#39;constant 2010 US$&#39;</span><span class="p">],</span><span class="c1"># height</span>
+            <span class="n">height</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="c1"># 高度</span>
+            <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="c1"># 对齐</span>
+            <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;2019年金砖国家GDP&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span> <span class="c1"># 不显示横坐标刻度</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">barh</span><span class="p">,</span><span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> 亿美元&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># 保存图片</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;barh-GDP.png&#39;</span><span class="p">,</span> 
+            <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># transparent=True 如果格式支持，则使保存的图形的背景透明</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># dpi=80 控制输出的分辨率（每平方英寸的点数）</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span> <span class="c1">#bbox_inches=&quot;tight&quot; 使图形的边界适合我们的绘图</span>
+           <span class="p">)</span>
+</code></pre></div>
+<p>​  <br />
+<img alt="png" src="../img/barh1.png" />
+​    </p>
+<p><strong>金砖国家人均GDP条形图</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span> <span class="c1"># 设置主题，可通过plt.style.availablel来查看更多主题</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">barh</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">pergdp</span><span class="p">[</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span> <span class="c1"># x</span>
+             <span class="n">pergdp</span><span class="p">[</span><span class="s1">&#39;constant 2010 US$&#39;</span><span class="p">],</span><span class="c1"># height</span>
+            <span class="n">height</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="c1"># 高度</span>
+            <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="c1"># 对齐</span>
+            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="c1"># 颜色</span>
+            <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span> <span class="c1"># 透明度</span>
+              <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;2019年金砖国家人均GDP&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span> <span class="c1"># 不显示横坐标刻度</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">barh</span><span class="p">,</span><span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1"> 美元&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># 保存图片</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;barh-perGdp.png&#39;</span><span class="p">,</span> 
+            <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># transparent=True 如果格式支持，则使保存的图形的背景透明</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># dpi=80 控制输出的分辨率（每平方英寸的点数）</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span> <span class="c1">#bbox_inches=&quot;tight&quot; 使图形的边界适合我们的绘图</span>
+           <span class="p">)</span>
+</code></pre></div>
+<p>​  <br />
+<img alt="png" src="../img/barh2.png" />
+​    </p>
+<h3 id="_3"><strong>分组条形图</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>注意：条形图里的<code>width</code>参数含义不同于柱状图里的<code>width</code>,条形图里的<code>height</code>表示高度，与柱状图里的<code>width</code>（宽度）含义差不多。</p>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span> <span class="c1"># 设置主题，可通过plt.style.availablel来查看更多主题</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G3&#39;</span><span class="p">,</span> <span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="s1">&#39;G5&#39;</span><span class="p">]</span>
+<span class="n">men_means</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+<span class="n">women_means</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>  <span class="c1"># the label locations</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mf">0.35</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">rects1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">men_means</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Men&#39;</span><span class="p">,</span><span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">rects2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">women_means</span><span class="p">,</span><span class="n">height</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Women&#39;</span><span class="p">,</span><span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Scores&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Scores by group and gender&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">rects1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">rects2</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;barh-grouped.png&#39;</span><span class="p">,</span> 
+            <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># transparent=True 如果格式支持，则使保存的图形的背景透明</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># dpi=80 控制输出的分辨率（每平方英寸的点数）</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span> <span class="c1">#bbox_inches=&quot;tight&quot; 使图形的边界适合我们的绘图</span>
+           <span class="p">)</span>
+</code></pre></div>
+<p>​  <br />
+<img alt="png" src="../img/barh3.png" />
+​    </p>
+<h3 id="_4"><strong>堆积条形图</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>主要是<code>left</code>参数的配置。</p>
+<div class="highlight"><pre><span></span><code><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G3&#39;</span><span class="p">,</span> <span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="s1">&#39;G5&#39;</span><span class="p">]</span>
+<span class="n">men_means</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+<span class="n">women_means</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">bar1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">men_means</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Men&#39;</span><span class="p">)</span>
+<span class="n">bar2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">women_means</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="n">men_means</span><span class="p">,</span>
+       <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Women&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Scores&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Scores by group and gender&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">bar1</span><span class="p">,</span><span class="n">label_type</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">bar2</span><span class="p">,</span><span class="n">label_type</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;barh-stack.png&#39;</span><span class="p">,</span> 
+            <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># transparent=True 如果格式支持，则使保存的图形的背景透明</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># dpi=80 控制输出的分辨率（每平方英寸的点数）</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span> <span class="c1">#bbox_inches=&quot;tight&quot; 使图形的边界适合我们的绘图</span>
+           <span class="p">)</span>
+</code></pre></div>
+<p>​  <br />
+<img alt="png" src="../img/barh4.png" />
+​    </p>
+<h2 id="seaborn"><strong>seaborn方法</strong><a class="headerlink" href="#seaborn" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">seaborn</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hue_order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">mean</span> <span class="n">at</span> <span class="mh">0x7fecadf1cee0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mi">95</span><span class="p">,</span> <span class="n">n_boot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">saturation</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">errcolor</span><span class="o">=</span><span class="s1">&#39;.26&#39;</span><span class="p">,</span> <span class="n">errwidth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="_5"><strong>条形图</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>金砖国家GDP条形图</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span> <span class="c1"># 设置主题，共5种：darkgrid、whitegrid、dark、white、ticks</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">gdp</span><span class="p">[</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span><span class="n">x</span><span class="o">=</span><span class="n">gdp</span><span class="p">[</span><span class="s1">&#39;constant 2010 US$&#39;</span><span class="p">],</span><span class="n">data</span><span class="o">=</span><span class="n">gdp</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;2019年金砖国家GDP（亿美元）&#39;</span><span class="p">,</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;Microsoft YaHei&#39;</span><span class="p">,</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">gdp</span><span class="p">[</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;Microsoft YaHei&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;seaborn-gdp.png&#39;</span><span class="p">,</span> 
+            <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># transparent=True 如果格式支持，则使保存的图形的背景透明</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># dpi=80 控制输出的分辨率（每平方英寸的点数）</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span> <span class="c1">#bbox_inches=&quot;tight&quot; 使图形的边界适合我们的绘图</span>
+           <span class="p">)</span>
+</code></pre></div>
+<p>​  <br />
+<img alt="png" src="../img/barh5.png" />
+​    </p>
+<p><strong>金砖国家人均GDP条形图</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span> <span class="c1"># 设置主题，共5种：darkgrid、whitegrid、dark、white、ticks</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">pergdp</span><span class="p">[</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span><span class="n">x</span><span class="o">=</span><span class="n">pergdp</span><span class="p">[</span><span class="s1">&#39;constant 2010 US$&#39;</span><span class="p">],</span><span class="n">data</span><span class="o">=</span><span class="n">pergdp</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;2019年金砖国家人均GDP（美元）&#39;</span><span class="p">,</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;Microsoft YaHei&#39;</span><span class="p">,</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">pergdp</span><span class="p">[</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;Microsoft YaHei&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;seaborn-pergdp.png&#39;</span><span class="p">,</span> 
+            <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># transparent=True 如果格式支持，则使保存的图形的背景透明</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># dpi=80 控制输出的分辨率（每平方英寸的点数）</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span> <span class="c1">#bbox_inches=&quot;tight&quot; 使图形的边界适合我们的绘图</span>
+           <span class="p">)</span>
+</code></pre></div>
+<p>​  <br />
+<img alt="png" src="../img/barh6.png" />
+​    </p>
+<h3 id="_6"><strong>分组条形图</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;labels&#39;</span><span class="p">:[</span><span class="s1">&#39;G1&#39;</span><span class="p">,</span> <span class="s1">&#39;G2&#39;</span><span class="p">,</span> <span class="s1">&#39;G3&#39;</span><span class="p">,</span> <span class="s1">&#39;G4&#39;</span><span class="p">,</span> <span class="s1">&#39;G5&#39;</span><span class="p">],</span><span class="s1">&#39;men_means&#39;</span><span class="p">:[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">27</span><span class="p">],</span><span class="s1">&#39;women_means&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">]})</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">],</span><span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;men_means&#39;</span><span class="p">,</span><span class="s1">&#39;women_means&#39;</span><span class="p">],</span>
+       <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span><span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span> <span class="c1"># 设置主题，共5种：darkgrid、whitegrid、dark、white、ticks</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;labels&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">df1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Scores by group and gender&#39;</span><span class="p">,</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;Microsoft YaHei&#39;</span><span class="p">,</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;seaborn-grouped.png&#39;</span><span class="p">,</span> 
+            <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># transparent=True 如果格式支持，则使保存的图形的背景透明</span>
+            <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># dpi=80 控制输出的分辨率（每平方英寸的点数）</span>
+            <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span> <span class="c1">#bbox_inches=&quot;tight&quot; 使图形的边界适合我们的绘图</span>
+           <span class="p">)</span>
+</code></pre></div>
+<p>​  <br />
+<img alt="png" src="../img/barh7.png" />
+​    </p>
                 
               
               

@@ -545,9 +545,9 @@
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="c1"># 忽略错误输出</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span> <span class="c1"># jupyter note显示图片</span>
 </code></pre></div>
-<h2 id="_2">数据简介<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p><strong>读取数据</strong>
-数据是关于金砖国家的GDP和人均GDP，数据源于<a href="https://databank.shihang.org/reports.aspx?source=2&amp;series=NY.GDP.MKTP.KD&amp;country=#">世界银行</a>。</p>
+<h2 id="_2"><strong>数据简介</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>读取数据</strong>  </p>
+<p>数据是关于金砖国家的GDP和人均GDP，数据源于<a href="https://databank.shihang.org/reports.aspx?source=2&amp;series=NY.GDP.MKTP.KD&amp;country=#">世界银行</a>。</p>
 <div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;BRICS.xlsx&#39;</span><span class="p">)</span>
 <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
@@ -755,7 +755,7 @@
            <span class="p">)</span>
 </code></pre></div>
 <p>​  <br />
-<img alt="png" src="../img/output_13_0.png" />
+<img alt="png" src="../img/bar1.png" />
 ​    </p>
 <p><strong>金砖国家人均GDP柱状图</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span> <span class="c1"># 设置主题，可通过plt.style.availablel来查看更多主题</span>
@@ -777,7 +777,7 @@
            <span class="p">)</span>
 </code></pre></div>
 <p>​  <br />
-<img alt="png" src="../img/output_15_0.png" />
+<img alt="png" src="../img/bar2.png" />
 ​    </p>
 <h3 id="_4"><strong>分组柱状图</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>由于之前使用的数据差异较大，考虑到数据显示问题，所以本案例使用<code>matplotlib</code><a href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/barchart.html#sphx-glr-gallery-lines-bars-and-markers-barchart-py">官方文档</a>的数据。</p>
@@ -813,7 +813,7 @@
            <span class="p">)</span>
 </code></pre></div>
 <p>​  <br />
-<img alt="png" src="../img/output_18_0.png" />
+<img alt="png" src="../img/bar3.png" />
 ​    </p>
 <h3 id="_5"><strong>堆积柱状图</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>案例来源于matplotlib<a href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/bar_stacked.html#sphx-glr-gallery-lines-bars-and-markers-bar-stacked-py">官方文档</a>，略有修改；绘制堆积柱状图，主要是<code>bottom</code>参数的配置。</p>
@@ -843,7 +843,7 @@
            <span class="p">)</span>
 </code></pre></div>
 <p>​  <br />
-<img alt="png" src="../img/output_21_0.png" />
+<img alt="png" src="../img/bar4.png" />
 ​    </p>
 <h2 id="seaborn"><strong>seaborn方法</strong><a class="headerlink" href="#seaborn" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">seaborn</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hue_order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">mean</span> <span class="n">at</span> <span class="mh">0x7fecadf1cee0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mi">95</span><span class="p">,</span> <span class="n">n_boot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">saturation</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">errcolor</span><span class="o">=</span><span class="s1">&#39;.26&#39;</span><span class="p">,</span> <span class="n">errwidth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -863,14 +863,14 @@
            <span class="p">)</span>
 </code></pre></div>
 <p>​  <br />
-<img alt="png" src="../img/output_27_0.png" />
+<img alt="png" src="../img/bar5.png" />
 ​    </p>
 <p><strong>金砖国家人均GDP柱状图</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span> <span class="c1"># 设置主题，共5种：darkgrid、whitegrid、dark、white、ticks</span>
 <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">pergdp</span><span class="p">[</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">pergdp</span><span class="p">[</span><span class="s1">&#39;constant 2010 US$&#39;</span><span class="p">],</span><span class="n">data</span><span class="o">=</span><span class="n">gdp</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">pergdp</span><span class="p">[</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">pergdp</span><span class="p">[</span><span class="s1">&#39;constant 2010 US$&#39;</span><span class="p">],</span><span class="n">data</span><span class="o">=</span><span class="n">pergdp</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;2019年金砖国家人均GDP（美元）&#39;</span><span class="p">,</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;Microsoft YaHei&#39;</span><span class="p">,</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">})</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">gdp</span><span class="p">[</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;Microsoft YaHei&#39;</span><span class="p">})</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">pergdp</span><span class="p">[</span><span class="s1">&#39;Country Name&#39;</span><span class="p">],</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;Microsoft YaHei&#39;</span><span class="p">})</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;seaborn-pergdp.png&#39;</span><span class="p">,</span> 
             <span class="n">transparent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># transparent=True 如果格式支持，则使保存的图形的背景透明</span>
             <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="c1"># dpi=80 控制输出的分辨率（每平方英寸的点数）</span>
@@ -878,7 +878,7 @@
            <span class="p">)</span>
 </code></pre></div>
 <p>​  <br />
-<img alt="png" src="../img/output_29_0.png" />
+<img alt="png" src="../img/bar6.png" />
 ​    </p>
 <h3 id="_7"><strong>分组柱状图</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>由于加载<code>seaborn</code>官网的数据出现问题，本案例将<code>motplotlib</code>对应案例的数据进行了简单加工；主要参数设置<code>hue</code>。</p>
@@ -898,7 +898,7 @@
            <span class="p">)</span>
 </code></pre></div>
 <p>​  <br />
-<img alt="png" src="../img/output_33_0.png" />
+<img alt="png" src="../img/bar7.png" />
 ​    </p>
 <h3 id="_8"><strong>堆积柱状图</strong><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>官方文档并没涉及，感兴趣的可以参阅<a href="https://randyzwitch.com/creating-stacked-bar-chart-seaborn/">此处</a>。</p>
