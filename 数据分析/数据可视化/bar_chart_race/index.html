@@ -1,0 +1,560 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.7">
+    
+    
+      
+        <title>动态条形图/柱形图 - Python 学习记录</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c772ddf0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="light-blue">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Python 学习记录" class="md-header__button md-logo" aria-label="Python 学习记录" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 学习记录
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              动态条形图/柱形图
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Python 学习记录" class="md-nav__button md-logo" aria-label="Python 学习记录" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Python 学习记录
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        简介
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/" class="md-nav__link">
+        Python 基础
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        数据分析
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据分析" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          数据分析
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98/" class="md-nav__link">
+        数据读取与保存
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        数据清洗
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86/" class="md-nav__link">
+        数据整理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" checked>
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        数据可视化
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据可视化" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          数据可视化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bar/" class="md-nav__link">
+        柱状图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../barh/" class="md-nav__link">
+        条形图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          动态条形图/柱形图
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        动态条形图/柱形图
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据说明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    绘图
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    数据说明
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    绘图
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1"><strong>动态条形图或柱形图</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在<code>python</code>中动态条形图或柱形图主要使用<code>matplotli</code>b或<code>plotly</code>来绘制；不过，有大神将绘制过程进行了封装：借助<code>bar_chart_race</code>就可以简单、轻松的绘制。要使用此函数，需要安装；不过使用<code>pip install bar_chart_race</code>命令进行安装的只是<code>0.1</code>版本，要使用更多功能，需要在<a href="https://github.com/dexplo/bar_chart_race/">作者的GIthub</a>上下载源代码，进行安装<code>0.2</code>版本。<br />
+安装方式：解压Github下载的源代码，找到<code>setup.py</code>所在位置，在<code>cmd</code>里定位到该文件夹，使用<code>python setup.py install</code>进行安装。</p>
+<p>为了将动画保存到磁盘，请使用您要保存的文件名作为第二个参数。您需要先安装<code>ffmpeg</code>才能保存动画。安装后，您将能够将动画保存为多种格式（mp4，m4v，mov等）。要将动画另存为gif，请安装<code>ImageMagick</code>。  </p>
+<p>如果您在Jupyter Notebook中工作，请保留<code>filename as None</code>，它将自动嵌入到Jupyter Notebook中。</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bar_chart_race</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span> <span class="c1"># pandas DataFrame</span>
+    <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># None或str，默认None</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="c1"># &#39;h&#39;或&#39;v&#39;，默认&#39;h&#39;</span>
+    <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;desc&#39;</span><span class="p">,</span><span class="c1"># desc&#39;或&#39;asc&#39;，默认&#39;desc&#39;</span>
+    <span class="n">n_bars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># int，默认None，最大条数</span>
+    <span class="n">fixed_order</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># ool或list，默认False，顺序</span>
+    <span class="n">fixed_max</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># bool，默认False，是否固定包含这些值的轴的最大值。</span>
+    <span class="n">steps_per_period</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1"># int，默认10，The number of steps to go from one time period to the next. </span>
+    <span class="n">period_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="c1"># int, default 500，Number of milliseconds to animate each period (row)</span>
+    <span class="n">interpolate_period</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="c1"># bool, default False </span>
+    <span class="n">label_bars</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="c1"># bool, default True，是否在右侧标记值</span>
+    <span class="n">bar_size</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="c1"># float, default .95</span>
+    <span class="n">period_label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="c1"># bool or dict, default True </span>
+    <span class="n">period_fmt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="c1"># str, default None</span>
+    <span class="n">period_summary_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="c1"># function, default None</span>
+    <span class="n">perpendicular_bar_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># function or str, default None</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">),</span> <span class="c1"># two-item tuple of numbers, default (6, 3.5)</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;dark24&#39;</span><span class="p">,</span> <span class="c1"># str, matplotlib colormap instance, or list of colors, default &#39;dark24&#39;</span>
+    <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># str, default None，标题</span>
+    <span class="n">title_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># number or str, default plt.rcParams[&#39;axes.titlesize&#39;] ，标题字体大小</span>
+    <span class="n">bar_label_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="c1"># number or str, default 7，标签大小</span>
+    <span class="n">tick_label_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="c1"># number or str, default 7，刻度大小</span>
+    <span class="n">shared_fontdict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="c1"># dict, default None，字体共享设置</span>
+    <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="c1"># &#39;linear&#39; or &#39;log&#39;, default &#39;linear&#39;</span>
+    <span class="n">writer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># str or matplotlib Writer instance</span>
+    <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># matplotlib Figure, default None</span>
+    <span class="n">dpi</span><span class="o">=</span><span class="mi">144</span><span class="p">,</span><span class="c1"># int, default 144</span>
+    <span class="n">bar_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># dict, default</span>
+    <span class="n">filter_column_colors</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># bool, default False</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 导入库</span>
+<span class="kn">import</span> <span class="nn">bar_chart_race</span> <span class="k">as</span> <span class="nn">bcr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="c1"># 忽略错误输出</span>
+</code></pre></div>
+<h2 id="_2"><strong>数据说明</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><code>bar_chart_race</code>使用的数据必须是处理后的宽数据；其中每一行代表一个时间段，每列包含该类别的条形值，（可选）使用索引标记每个时间段，索引可以是任何类型。  </p>
+<p>可使用<code>prepare_wide_data()</code>或<code>prepare_long_data()</code>两个函数将数据转换成正确的格式；也可以运用<code>melt()</code>或<code>pivot()</code>函数将数据处理成正确的格式。  </p>
+<p>本文数据使用作者GIThub上的共享数据，下载源代码时，里面附带。由于通过<code>bcr.load_dataset()</code>时遇到问题，所以从本地读取。</p>
+<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;covid19_tutorial.csv&#39;</span><span class="p">,</span><span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span><span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+<span class="n">data</span>
+</code></pre></div>
+<p><img alt="jpg" src="../img/data.jpg" /></p>
+<h2 id="_3"><strong>绘图</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># 要传递给period_summary_func的函数</span>
+<span class="k">def</span> <span class="nf">summary</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ranks</span><span class="p">):</span>
+    <span class="n">total_deaths</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Total Deaths - </span><span class="si">{</span><span class="n">total_deaths</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">99</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">05</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s1">&#39;ha&#39;</span><span class="p">:</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+<span class="c1"># 绘图</span>
+<span class="n">bcr</span><span class="o">.</span><span class="n">bar_chart_race</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="c1"># 数据</span>
+                   <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;covid.gif&#39;</span><span class="p">,</span><span class="c1"># 保存为.gif</span>
+                   <span class="n">steps_per_period</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="c1"># 增大些平滑度</span>
+                   <span class="n">period_length</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="c1">#  增大时间两</span>
+                   <span class="n">period_label</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">99</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;ha&#39;</span><span class="p">:</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">},</span><span class="c1"># 日期标签</span>
+                   <span class="n">title</span><span class="o">=</span><span class="s1">&#39;各国COVID-19死亡人数&#39;</span><span class="p">,</span>
+                   <span class="n">shared_fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span> <span class="s1">&#39;LiSu&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">},</span><span class="c1"># 共享字体</span>
+                   <span class="n">period_summary_func</span><span class="o">=</span><span class="n">summary</span><span class="p">,</span> <span class="c1"># 添加死亡总人数</span>
+                  <span class="p">)</span>
+</code></pre></div>
+<img alt="gif" src="../img/covid.gif" /></p>
+<blockquote>
+<ul>
+<li>更多功能介绍可查阅<a href="https://www.dexplo.org/bar_chart_race/">官方文档</a>。  </li>
+</ul>
+</blockquote>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../barh/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              条形图
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.65ce87ac.min.js"></script>
+      
+    
+  </body>
+</html>
