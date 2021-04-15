@@ -14,7 +14,7 @@
     
     
       
-        <title>动态条形图/柱形图 - Python 学习记录</title>
+        <title>饼图 - Python 学习记录</title>
       
     
     
@@ -88,7 +88,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              动态条形图/柱形图
+              饼图
             
           </span>
         </div>
@@ -345,63 +345,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          动态条形图/柱形图
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../bar_chart_race/" class="md-nav__link">
         动态条形图/柱形图
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    函数简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    数据说明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    绘图
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -421,11 +369,20 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../pie/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         饼图
       </a>
+      
     </li>
   
 
@@ -649,35 +606,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    函数简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    数据说明
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    绘图
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -689,83 +617,68 @@
               
                 
                 
-                <h1 id="_1"><strong>动态条形图或柱形图</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>在<code>python</code>中动态条形图或柱形图主要使用<code>matplotli</code>b或<code>plotly</code>来绘制；不过，有大神将绘制过程进行了封装：借助<code>bar_chart_race</code>就可以简单、轻松的绘制。要使用此函数，需要安装；不过使用<code>pip install bar_chart_race</code>命令进行安装的只是<code>0.1</code>版本，要使用更多功能，需要在<a href="https://github.com/dexplo/bar_chart_race/">作者的GIthub</a>上下载源代码，进行安装<code>0.2</code>版本。<br />
-安装方式：解压Github下载的源代码，找到<code>setup.py</code>所在位置，在<code>cmd</code>里定位到该文件夹，使用<code>python setup.py install</code>进行安装。</p>
-<p>为了将动画保存到磁盘，请使用您要保存的文件名作为第二个参数。您需要先安装<code>ffmpeg</code>才能保存动画。安装后，您将能够将动画保存为多种格式（mp4，m4v，mov等）。要将动画另存为gif，请安装<code>ImageMagick</code>。  </p>
-<p>如果您在Jupyter Notebook中工作，请保留<code>filename as None</code>，它将自动嵌入到Jupyter Notebook中。  </p>
-<h2 id="_2"><strong>函数简介</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bar_chart_race</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">,</span> <span class="c1"># pandas DataFrame</span>
-    <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># None或str，默认None</span>
-    <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="c1"># &#39;h&#39;或&#39;v&#39;，默认&#39;h&#39;</span>
-    <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;desc&#39;</span><span class="p">,</span><span class="c1"># desc&#39;或&#39;asc&#39;，默认&#39;desc&#39;</span>
-    <span class="n">n_bars</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># int，默认None，最大条数</span>
-    <span class="n">fixed_order</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># ool或list，默认False，顺序</span>
-    <span class="n">fixed_max</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># bool，默认False，是否固定包含这些值的轴的最大值。</span>
-    <span class="n">steps_per_period</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1"># int，默认10，The number of steps to go from one time period to the next. </span>
-    <span class="n">period_length</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="c1"># int, default 500，Number of milliseconds to animate each period (row)</span>
-    <span class="n">interpolate_period</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="c1"># bool, default False </span>
-    <span class="n">label_bars</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="c1"># bool, default True，是否在右侧标记值</span>
-    <span class="n">bar_size</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="c1"># float, default .95</span>
-    <span class="n">period_label</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="c1"># bool or dict, default True </span>
-    <span class="n">period_fmt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="c1"># str, default None</span>
-    <span class="n">period_summary_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="c1"># function, default None</span>
-    <span class="n">perpendicular_bar_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># function or str, default None</span>
-    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">),</span> <span class="c1"># two-item tuple of numbers, default (6, 3.5)</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;dark24&#39;</span><span class="p">,</span> <span class="c1"># str, matplotlib colormap instance, or list of colors, default &#39;dark24&#39;</span>
-    <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># str, default None，标题</span>
-    <span class="n">title_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># number or str, default plt.rcParams[&#39;axes.titlesize&#39;] ，标题字体大小</span>
-    <span class="n">bar_label_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="c1"># number or str, default 7，标签大小</span>
-    <span class="n">tick_label_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="c1"># number or str, default 7，刻度大小</span>
-    <span class="n">shared_fontdict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="c1"># dict, default None，字体共享设置</span>
-    <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="c1"># &#39;linear&#39; or &#39;log&#39;, default &#39;linear&#39;</span>
-    <span class="n">writer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># str or matplotlib Writer instance</span>
-    <span class="n">fig</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># matplotlib Figure, default None</span>
-    <span class="n">dpi</span><span class="o">=</span><span class="mi">144</span><span class="p">,</span><span class="c1"># int, default 144</span>
-    <span class="n">bar_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1"># dict, default</span>
-    <span class="n">filter_column_colors</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># bool, default False</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># 导入库</span>
-<span class="kn">import</span> <span class="nn">bar_chart_race</span> <span class="k">as</span> <span class="nn">bcr</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+                <h1 id="_1"><strong>饼图</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="c1"># 忽略错误输出</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 </code></pre></div>
-<h2 id="_3"><strong>数据说明</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p><code>bar_chart_race</code>使用的数据必须是处理后的宽数据；其中每一行代表一个时间段，每列包含该类别的条形值，（可选）使用索引标记每个时间段，索引可以是任何类型。  </p>
-<p>可使用<code>prepare_wide_data()</code>或<code>prepare_long_data()</code><a href="https://www.dexplo.org/bar_chart_race/data_preparation/">两个函数</a>将数据转换成正确的格式；也可以运用<code>melt()</code>或<code>pivot()</code>函数将数据处理成正确的格式。  </p>
-<p>本文数据使用作者GIThub上的共享数据，下载源代码时，里面附带。由于通过<code>bcr.load_dataset()</code>时遇到问题，所以从本地读取数据。</p>
-<div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;covid19_tutorial.csv&#39;</span><span class="p">,</span>
-    <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="c1"># 将&#39;date&#39;解析为日期</span>
-    <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;date&#39;</span> <span class="c1"># 将&#39;date&#39;作为索引</span>
-    <span class="p">)</span>
-<span class="n">data</span>
+<div class="highlight"><pre><span></span><code><span class="n">Axes</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">explode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pctdistance</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labeldistance</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">counterclock</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">wedgeprops</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">textprops</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rotatelabels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="jpg" src="../img/data.jpg" /></p>
-<h2 id="_4"><strong>绘图</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># 要传递给period_summary_func的函数</span>
-<span class="k">def</span> <span class="nf">summary</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ranks</span><span class="p">):</span>
-    <span class="n">total_deaths</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Total Deaths - </span><span class="si">{</span><span class="n">total_deaths</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">&#39;</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">99</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">05</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s1">&#39;ha&#39;</span><span class="p">:</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
-<span class="c1"># 绘图</span>
-<span class="n">bcr</span><span class="o">.</span><span class="n">bar_chart_race</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="c1"># 数据</span>
-                   <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;covid.gif&#39;</span><span class="p">,</span><span class="c1"># 保存为.gif</span>
-                   <span class="n">steps_per_period</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="c1"># 增大平滑度</span>
-                   <span class="n">period_length</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="c1">#  增大时间量</span>
-                   <span class="n">period_label</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">99</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;ha&#39;</span><span class="p">:</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">},</span><span class="c1"># 日期标签</span>
-                   <span class="n">title</span><span class="o">=</span><span class="s1">&#39;各国COVID-19死亡人数&#39;</span><span class="p">,</span>
-                   <span class="n">shared_fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span> <span class="s1">&#39;LiSu&#39;</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">},</span><span class="c1"># 共享字体</span>
-                   <span class="n">period_summary_func</span><span class="o">=</span><span class="n">summary</span><span class="p">,</span> <span class="c1"># 添加死亡总人数</span>
-                  <span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 数据</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;直接访问&quot;</span><span class="p">,</span> <span class="s2">&quot;邮件营销&quot;</span><span class="p">,</span> <span class="s2">&quot;联盟广告&quot;</span><span class="p">,</span> <span class="s2">&quot;视频广告&quot;</span><span class="p">,</span> <span class="s2">&quot;搜索引擎&quot;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">335</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">1548</span><span class="p">]</span>
 </code></pre></div>
-<img alt="gif" src="../img/covid.gif" /></p>
-<blockquote>
-<ul>
-<li>更多功能介绍可查阅<a href="https://www.dexplo.org/bar_chart_race/">官方文档</a>。  </li>
-</ul>
-</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># 基本绘图</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Microsoft Yahei&#39;</span> <span class="c1">#字体</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span> <span class="c1"># 主题</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;饼图案例&#39;</span><span class="p">,</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../img/p1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 添加图例</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Microsoft Yahei&#39;</span> <span class="c1">#字体</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span> <span class="c1"># 主题</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;图例&#39;</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">,</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;饼图案例&#39;</span><span class="p">,</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../img/p2.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 添加explode</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Microsoft Yahei&#39;</span> <span class="c1">#字体</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span> <span class="c1"># 主题</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">explode</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span><span class="n">explode</span><span class="o">=</span><span class="n">explode</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;图例&#39;</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">,</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;饼图案例&#39;</span><span class="p">,</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../img/p3.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 标签显示原始值</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.sans-serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Microsoft Yahei&#39;</span> <span class="c1">#字体</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.autolayout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span> <span class="c1"># 主题</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">allvals</span><span class="p">):</span>
+    <span class="n">absolute</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mf">100.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">allvals</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{:.1f}</span><span class="s2">%</span><span class="se">\n</span><span class="s2">(</span><span class="si">{:d}</span><span class="s2"> )&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">absolute</span><span class="p">)</span>
+
+<span class="n">explode</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span><span class="n">explode</span><span class="o">=</span><span class="n">explode</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span><span class="n">func</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;图例&#39;</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">,</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;饼图案例&#39;</span><span class="p">,</span><span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../img/p4.png" /></p>
                 
               
               
@@ -783,7 +696,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../barh/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../scatter/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -792,19 +705,19 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              条形图
+              散点图
             </div>
           </div>
         </a>
       
       
-        <a href="../scatter/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../../pyecharts-%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B8%93%E9%A2%98/pyecharts%E7%AE%80%E4%BB%8B/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              散点图
+              pyecharts 简介
             </div>
           </div>
           <div class="md-footer__button md-icon">
