@@ -1,0 +1,1008 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.7">
+    
+    
+      
+        <title>python速览 - Python 学习记录</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c772ddf0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Microsoft+YaHei:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Microsoft YaHei";--md-code-font-family:""}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Python 学习记录" class="md-header__button md-logo" aria-label="Python 学习记录" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 学习记录
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              python速览
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      简介
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98/" class="md-tabs__link">
+        数据分析
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Python 基础
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 学习记录" class="md-nav__button md-logo" aria-label="Python 学习记录" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Python 学习记录
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        简介
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        数据分析
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据分析" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          数据分析
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98/" class="md-nav__link">
+        数据读取与保存
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        数据清洗
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86/" class="md-nav__link">
+        数据整理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      <label class="md-nav__link" for="__nav_2_4">
+        数据可视化
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据可视化" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          数据可视化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/bar/" class="md-nav__link">
+        柱状图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/barh/" class="md-nav__link">
+        条形图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/bar_chart_race/" class="md-nav__link">
+        动态条形图/柱形图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/scatter/" class="md-nav__link">
+        散点图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/pie/" class="md-nav__link">
+        饼图
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Python 基础
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Python 基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Python 基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          python速览
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        python速览
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-python" class="md-nav__link">
+    1.1 Python 用作计算器
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Python 用作计算器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    1.1.1 数字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    1.1.2 字符串
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    1.1.3 列表
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 走向编程的第一步
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E4%B8%8E%E6%9D%A1%E4%BB%B6%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        循环语句与条件控制
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        函数
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-python" class="md-nav__link">
+    1.1 Python 用作计算器
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Python 用作计算器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    1.1.1 数字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    1.1.2 字符串
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    1.1.3 列表
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 走向编程的第一步
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="python"><a href="https://docs.python.org/zh-cn/3/tutorial/introduction.html"><strong>Python 速览</strong></a><a class="headerlink" href="#python" title="Permanent link">&para;</a></h1>
+<p>下面的例子以是否显示提示符（<a href="https://docs.python.org/zh-cn/3/glossary.html#term-0">&gt;&gt;&gt;</a> 与 <a href="https://docs.python.org/zh-cn/3/glossary.html#term-1">...</a>）区分输入与输出：输入例子中的代码时，要键入以提示符开头的行中提示符后的所有内容；未以提示符开头的行是解释器的输出。注意，例子中的某行出现的第二个提示符是用来结束多行命令的，此时，要键入一个空白行。</p>
+<p><strong>Python 注释以 <code>#</code> 开头，直到该物理行结束。注释可以在行开头，或空白符与代码之后，但不能在字符串里面。字符串中的井号就是井号。注释用于阐明代码，Python 不解释注释，键入例子时，可以不输入注释</strong>。</p>
+<p>几个例子：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># this is the first comment</span>
+<span class="n">spam</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># and this is the second comment</span>
+          <span class="c1"># ... and now a third!</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;# This is not a comment because it&#39;s inside quotes.&quot;</span>
+</code></pre></div>
+<h2 id="11-python"><strong>1.1 Python 用作计算器</strong><a class="headerlink" href="#11-python" title="Permanent link">&para;</a></h2>
+<p>启动解释器，等待主提示符（<code>&gt;&gt;&gt;</code> ）出现；然后输入命令。</p>
+<h3 id="111"><strong>1.1.1 数字</strong><a class="headerlink" href="#111" title="Permanent link">&para;</a></h3>
+<p>解释器像一个简单的计算器：输入表达式，就会给出答案。表达式的语法很直接：运算符 <code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> 的用法和其他大部分语言一样（比如，Pascal 或 C）；括号 (<code>()</code>) 用来分组。例如：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> 
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">50</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="mi">6</span>
+<span class="mi">20</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="mi">50</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+<span class="mf">5.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">8</span> <span class="o">/</span> <span class="mi">5</span>  <span class="c1"># division always returns a floating point number</span>
+<span class="mf">1.6</span>
+</code></pre></div>
+<p>整数（如，<code>2</code>、<code>4</code>、<code>20</code> ）的类型是 <a href="https://docs.python.org/zh-cn/3/library/functions.html#int"><code>int</code></a>，带小数（如，<code>5.0</code>、<code>1.6</code> ）的类型是 <a href="https://docs.python.org/zh-cn/3/library/functions.html#float"><code>float</code></a>。</p>
+<p>除法运算（<code>/</code>）返回浮点数。用 <code>//</code> 运算符执行 <a href="https://docs.python.org/zh-cn/3/glossary.html#term-floor-division">floor division</a> 的结果是整数（忽略小数，<strong>向下取整</strong>）；计算余数用 <code>%</code>；计算乘方用<code>**</code>运算符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">17</span> <span class="o">/</span> <span class="mi">3</span>  <span class="c1"># classic division returns a float</span>
+<span class="mf">5.666666666666667</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">17</span> <span class="o">//</span> <span class="mi">3</span>  <span class="c1"># floor division discards the fractional part</span>
+<span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">17</span> <span class="o">%</span> <span class="mi">3</span>  <span class="c1"># the % operator returns the remainder of the division</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span>  <span class="c1"># result * divisor + remainder</span>
+<span class="mi">17</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">5</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># 5 squared</span>
+<span class="mi">25</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">7</span>  <span class="c1"># 2 to the power of 7</span>
+<span class="mi">128</span>
+<span class="c1"># 注意：** 比 - 的优先级更高, 所以 -3**2 会被解释成 -(3**2) ，因此，结果是 -9。要避免这个问题，并且得到 9, 可以用 (-3)**2。</span>
+</code></pre></div>
+<p>等号（<code>=</code>）用于给变量赋值。赋值后，下一个交互提示符的位置不显示任何结果：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">9</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+<span class="mi">900</span>
+</code></pre></div>
+<p>如果变量未定义（即，未赋值），使用该变量会提示错误：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">n</span>  <span class="c1"># try to access an undefined variable</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;n&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+</code></pre></div>
+<p>Python 全面支持浮点数；混合类型运算数的运算会把整数转换为浮点数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">4</span> <span class="o">*</span> <span class="mf">3.75</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="mf">14.0</span>
+</code></pre></div>
+<p>交互模式下，上次输出的表达式会赋给变量 <code>_</code>。把 Python 当作计算器时，用该变量实现下一步计算更简单，例如：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">tax</span> <span class="o">=</span> <span class="mf">12.5</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">price</span> <span class="o">=</span> <span class="mf">100.50</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">price</span> <span class="o">*</span> <span class="n">tax</span>
+<span class="mf">12.5625</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">price</span> <span class="o">+</span> <span class="n">_</span>
+<span class="mf">113.0625</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># 四舍五入，取小数点后两位</span>
+<span class="mf">113.06</span>
+</code></pre></div>
+<p>除了 <a href="https://docs.python.org/zh-cn/3/library/functions.html#int"><code>int</code></a> 和 <a href="https://docs.python.org/zh-cn/3/library/functions.html#float"><code>float</code></a>，Python 还支持其他数字类型，例如 <a href="https://docs.python.org/zh-cn/3/library/decimal.html#decimal.Decimal"><code>Decimal</code></a> 或 <a href="https://docs.python.org/zh-cn/3/library/fractions.html#fractions.Fraction"><code>Fraction</code></a>。Python 还内置支持 <a href="https://docs.python.org/zh-cn/3/library/stdtypes.html#typesnumeric">复数</a>，后缀 <code>j</code> 或 <code>J</code> 用于表示虚数（例如 <code>3+5j</code> ）。</p>
+<h3 id="112"><strong>1.1.2 字符串</strong><a class="headerlink" href="#112" title="Permanent link">&para;</a></h3>
+<p>除了数字，Python 还可以操作字符串。字符串有多种表现形式，用**单引号（<code>'……'</code>）或双引号（<code>"……"</code>）标注的结果相同。反斜杠 <code>\</code> 用于转义**：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;spam eggs&#39;</span>  <span class="c1"># single quotes</span>
+<span class="s1">&#39;spam eggs&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;doesn</span><span class="se">\&#39;</span><span class="s1">t&#39;</span>  <span class="c1"># use \&#39; to escape the single quote...</span>
+<span class="s2">&quot;doesn&#39;t&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;doesn&#39;t&quot;</span>  <span class="c1"># ...or use double quotes instead</span>
+<span class="s2">&quot;doesn&#39;t&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;&quot;Yes,&quot; they said.&#39;</span>
+<span class="s1">&#39;&quot;Yes,&quot; they said.&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">Yes,</span><span class="se">\&quot;</span><span class="s2"> they said.&quot;</span>
+<span class="s1">&#39;&quot;Yes,&quot; they said.&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s1">t,&quot; they said.&#39;</span>
+<span class="s1">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s1">t,&quot; they said.&#39;</span>
+</code></pre></div>
+<p>交互式解释器会为输出的字符串加注引号，特殊字符使用反斜杠转义。虽然，有时输出的字符串看起来与输入的字符串不一样（外加的引号可能会改变），但两个字符串是相同的。如果字符串中有单引号而没有双引号，该字符串外将加注双引号，反之，则加注单引号。<a href="https://docs.python.org/zh-cn/3/library/functions.html#print"><code>print()</code></a> 函数输出的内容更简洁易读，它会省略两边的引号，并输出转义后的特殊字符：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s1">t,&quot; they said.&#39;</span>
+<span class="s1">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s1">t,&quot; they said.&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;Isn</span><span class="se">\&#39;</span><span class="s1">t,&quot; they said.&#39;</span><span class="p">)</span>
+<span class="s2">&quot;Isn&#39;t,&quot;</span> <span class="n">they</span> <span class="n">said</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;First line.</span><span class="se">\n</span><span class="s1">Second line.&#39;</span>  <span class="c1"># \n means newline</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span>  <span class="c1"># without print(), \n is included in the output</span>
+<span class="s1">&#39;First line.</span><span class="se">\n</span><span class="s1">Second line.&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c1"># with print(), \n produces a new line</span>
+<span class="n">First</span> <span class="n">line</span><span class="o">.</span>
+<span class="n">Second</span> <span class="n">line</span><span class="o">.</span>
+</code></pre></div>
+<p><strong>如果不希望前置 <code>\</code> 的字符转义成特殊字符，可以使用 <em>原始字符串</em>，在引号前添加 <code>r</code> 即可</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;C:\some</span><span class="se">\n</span><span class="s1">ame&#39;</span><span class="p">)</span>  <span class="c1"># here \n means newline!</span>
+<span class="n">C</span><span class="p">:</span>\<span class="n">some</span>
+<span class="n">ame</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\some\name&#39;</span><span class="p">)</span>  <span class="c1"># note the r before the quote</span>
+<span class="n">C</span><span class="p">:</span>\<span class="n">some</span>\<span class="n">name</span>
+</code></pre></div>
+<p><strong>字符串字面值可以实现跨行连续输入。实现方式是用三引号：<code>"""..."""</code> 或 <code>'''...'''</code>，字符串行尾会自动加上回车换行，如果不需要回车换行，在行尾添加 <code>\</code> 即可</strong>。示例如下：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">Usage: thingy [OPTIONS]</span>
+<span class="s2">     -h                        Display this usage message</span>
+<span class="s2">     -H hostname               Hostname to connect to</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># 输出结果如下（注意：第一行没有换行符）：</span>
+<span class="n">Usage</span><span class="p">:</span> <span class="n">thingy</span> <span class="p">[</span><span class="n">OPTIONS</span><span class="p">]</span>
+     <span class="o">-</span><span class="n">h</span>                        <span class="n">Display</span> <span class="n">this</span> <span class="n">usage</span> <span class="n">message</span>
+     <span class="o">-</span><span class="n">H</span> <span class="n">hostname</span>               <span class="n">Hostname</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span>
+</code></pre></div>
+<p><strong>字符串可以用 <code>+</code> 合并（粘到一起），也可以用 <code>*</code> 重复</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">3</span> <span class="o">*</span> <span class="s1">&#39;un&#39;</span> <span class="o">+</span> <span class="s1">&#39;ium&#39;</span>
+<span class="s1">&#39;unununium&#39;</span>
+</code></pre></div>
+<p>相邻的两个或多个 <em>字符串字面值</em> （引号标注的字符）会自动合并：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;Py&#39;</span> <span class="s1">&#39;thon&#39;</span>
+<span class="s1">&#39;Python&#39;</span>
+<span class="c1"># 但是这项功能只能用于两个字面值，不能用于变量或表达式：</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;Py&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prefix</span> <span class="s1">&#39;thon&#39;</span>  <span class="c1"># can&#39;t concatenate a variable and a string literal</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">prefix</span> <span class="s1">&#39;thon&#39;</span>
+                <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="s1">&#39;un&#39;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="s1">&#39;ium&#39;</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="p">(</span><span class="s1">&#39;un&#39;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="s1">&#39;ium&#39;</span>
+                   <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</code></pre></div>
+<p>合并多个变量，或合并变量与字面值，要用 <code>+</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;Py&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s1">&#39;thon&#39;</span>
+<span class="s1">&#39;Python&#39;</span>
+</code></pre></div>
+<p>字符串支持 <strong>索引</strong> （下标访问），第一个字符的索引是 0。单字符没有专用的类型，就是长度为一的字符串：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># character in position 0</span>
+<span class="s1">&#39;P&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>  <span class="c1"># character in position 5</span>
+<span class="s1">&#39;n&#39;</span>
+</code></pre></div>
+<p>索引还支持负数，用负数索引时，从右边开始计数；注意，-0 和 0 一样，因此，负数索引从 -1 开始。</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># last character</span>
+<span class="s1">&#39;n&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># second-last character</span>
+<span class="s1">&#39;o&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">]</span>
+<span class="s1">&#39;P&#39;</span>
+</code></pre></div>
+<p>除了索引，字符串还支持 <strong>切片</strong>。索引可以提取单个字符，<em>切片</em> 则提取子字符串：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># characters from position 0 (included) to 2 (excluded)</span>
+<span class="s1">&#39;Py&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>  <span class="c1"># characters from position 2 (included) to 5 (excluded)</span>
+<span class="s1">&#39;tho&#39;</span>
+<span class="c1"># 输出结果包含切片开始，但不包含切片结束。因此，s[:i] + s[i:] 总是等于 s：</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="s1">&#39;Python&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
+<span class="s1">&#39;Python&#39;</span>
+</code></pre></div>
+<p>切片索引的默认值很有用；省略开始索引时，默认值为 0，省略结束索引时，默认为到字符串的结尾：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>   <span class="c1"># character from the beginning to position 2 (excluded)</span>
+<span class="s1">&#39;Py&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>   <span class="c1"># characters from position 4 (included) to the end</span>
+<span class="s1">&#39;on&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>  <span class="c1"># characters from the second-last (included) to the end</span>
+<span class="s1">&#39;on&#39;</span>
+</code></pre></div>
+<p>对于使用非负索引的切片，如果两个索引都不越界，切片长度就是起止索引之差。例如， <code>word[1:3]</code> 的长度是 2。索引越界会报错：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">42</span><span class="p">]</span>  <span class="c1"># the word only has 6 characters</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="n">string</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
+</code></pre></div>
+<p>但是，切片会自动处理越界索引：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">42</span><span class="p">]</span>
+<span class="s1">&#39;on&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">42</span><span class="p">:]</span>
+<span class="s1">&#39;&#39;</span>
+</code></pre></div>
+<p>Python 字符串不能修改，是 <a href="https://docs.python.org/zh-cn/3/glossary.html#term-immutable">immutable</a> 的。因此，为字符串中某个索引位置赋值会报错：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;J&#39;</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;str&#39;</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">item</span> <span class="n">assignment</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">=</span> <span class="s1">&#39;py&#39;</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;str&#39;</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">item</span> <span class="n">assignment</span>
+</code></pre></div>
+<p><strong>不可变对象包括数字、字符串和元组。这样的对象不能被改变（id内存）。如果必须存储一个不同的值，则必须创建新的对象</strong>。它们在需要常量哈希值的地方起着重要作用，例如作为字典中的键。</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;J&#39;</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="s1">&#39;Jython&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">word</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;py&#39;</span>
+<span class="s1">&#39;Pypy&#39;</span>
+</code></pre></div>
+<p>内置函数 <a href="https://docs.python.org/zh-cn/3/library/functions.html#len"><code>len()</code></a> 返回字符串的长度：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;supercalifragilisticexpialidocious&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="mi">34</span>
+</code></pre></div>
+<h3 id="113"><strong>1.1.3 列表</strong><a class="headerlink" href="#113" title="Permanent link">&para;</a></h3>
+<p>Python 支持多种 <em>复合</em> 数据类型，可将不同值组合在一起。最常用的 <strong>列表 ，是用方括号标注，逗号分隔的一组值。<em>列表</em> 可以包含不同类型的元素，但一般情况下，各个元素的类型相同</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</code></pre></div>
+<p>和字符串（及其他内置 <a href="https://docs.python.org/zh-cn/3/glossary.html#term-sequence">sequence</a> 类型）一样，列表也支持索引和切片：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># indexing returns the item</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">25</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># slicing returns a new list</span>
+<span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</code></pre></div>
+<p>切片操作返回包含请求元素的新列表。以下切片操作会返回列表的 <a href="https://docs.python.org/zh-cn/3/library/copy.html#shallow-vs-deep-copy">浅拷贝</a>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span><span class="p">[:]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</code></pre></div>
+<p>列表还支持合并操作：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">squares</span> <span class="o">+</span> <span class="p">[</span><span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+</code></pre></div>
+<p>与 <a href="https://docs.python.org/zh-cn/3/glossary.html#term-immutable">immutable</a> 字符串不同, 列表是 <a href="https://docs.python.org/zh-cn/3/glossary.html#term-mutable">mutable</a> 类型，其内容可以改变（<strong>可变对象可以在其 <a href="https://docs.python.org/zh-cn/3/library/functions.html#id"><code>id()</code></a> 保持固定的情况下改变其取值</strong>）：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cubes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">125</span><span class="p">]</span>  <span class="c1"># something&#39;s wrong here</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">4</span> <span class="o">**</span> <span class="mi">3</span>  <span class="c1"># the cube of 4 is 64, not 65!</span>
+<span class="mi">64</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cubes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">64</span>  <span class="c1"># replace the wrong value</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cubes</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">125</span><span class="p">]</span>
+</code></pre></div>
+<p><code>append()</code> <em>方法</em> 可以在列表结尾添加新元素（详见后文）:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cubes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">216</span><span class="p">)</span>  <span class="c1"># add the cube of 6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cubes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">7</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># and the cube of 7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cubes</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">216</span><span class="p">,</span> <span class="mi">343</span><span class="p">]</span>
+</code></pre></div>
+<p>为切片赋值可以改变列表大小，甚至清空整个列表：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">letters</span>
+<span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># replace some values</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">letters</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">letters</span>
+<span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># now remove them</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">letters</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">letters</span>
+<span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># clear the list by replacing all the elements with an empty list</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">letters</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">letters</span>
+<span class="p">[]</span>
+</code></pre></div>
+<p>内置函数 <a href="https://docs.python.org/zh-cn/3/library/functions.html#len"><code>len()</code></a> 也支持列表：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">letters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+<span class="mi">4</span>
+</code></pre></div>
+<p>还可以嵌套列表（创建包含其他列表的列表），例如：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="p">[[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="s1">&#39;b&#39;</span>
+</code></pre></div>
+<h2 id="12"><strong>1.2 走向编程的第一步</strong><a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Fibonacci_number">斐波那契数列</a> :</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="c1"># Fibonacci series:</span>
+<span class="o">...</span> <span class="c1"># the sum of two elements defines the next</span>
+<span class="o">...</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="o">...</span>     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="o">...</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">5</span>
+<span class="mi">8</span>
+</code></pre></div>
+<p>本例引入了几个新功能。</p>
+<ul>
+<li>
+<p>第一行中的 <strong>多重赋值</strong>：变量 <code>a</code> 和 <code>b</code> 同时获得新值 0 和 1。最后一行又用了一次多重赋值，这体现在右表达式在赋值前就已经求值了。右表达式求值顺序为从左到右。</p>
+</li>
+<li>
+<p><a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#while"><code>while</code></a> 循环只要条件（这里指：<code>a &lt; 10</code>）保持为真就会一直执行。Python 和 C 一样，<strong>任何非零整数都为真，零为假</strong>。这个条件也可以是字符串或列表的值，事实上，任何序列都可以；长度非零就为真，空序列则为假。示例中的判断只是最简单的比较。比较操作符的标准写法和 C 语言一样： <code>&lt;</code> （小于）、 <code>&gt;</code> （大于）、 <code>==</code> （等于）、 <code>&lt;=</code> （小于等于)、 <code>&gt;=</code> （大于等于）及 <code>!=</code> （不等于）。</p>
+</li>
+<li>
+<p><em>循环体</em> 是 <em>缩进的</em> ：<strong>缩进是 Python 组织语句的方式</strong>。在交互式命令行里，得为每个缩输入制表符或空格。使用文本编辑器可以实现更复杂的输入方式；所有像样的文本编辑器都支持自动缩进。交互式输入复合语句时, 要在最后输入空白行表示结束（因为解析器不知道哪一行代码是最后一行）。注意，<strong>同一块语句的每一行的缩进相同</strong>。</p>
+</li>
+<li>
+<p><a href="https://docs.python.org/zh-cn/3/library/functions.html#print"><code>print()</code></a> 函数输出给定参数的值。与表达式不同（比如，之前计算器的例子），它能处理多个参数，包括浮点数与字符串。它输出的字符串不带引号，且各参数项之间会插入一个空格，这样可以实现更好的格式化操作：</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">256</span><span class="o">*</span><span class="mi">256</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The value of i is&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="n">The</span> <span class="n">value</span> <span class="n">of</span> <span class="n">i</span> <span class="ow">is</span> <span class="mi">65536</span>
+</code></pre></div>
+<p><strong>关键字参数 <em>end</em> 可以取消输出后面的换行, 或用另一个字符串结尾</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="o">...</span>
+<span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">144</span><span class="p">,</span><span class="mi">233</span><span class="p">,</span><span class="mi">377</span><span class="p">,</span><span class="mi">610</span><span class="p">,</span><span class="mi">987</span><span class="p">,</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/pie/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              饼图
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E4%B8%8E%E6%9D%A1%E4%BB%B6%E6%8E%A7%E5%88%B6/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              循环语句与条件控制
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<chong_xuan_zhang@163.com>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2 12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.65ce87ac.min.js"></script>
+      
+    
+  </body>
+</html>
