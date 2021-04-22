@@ -1,0 +1,1032 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.7">
+    
+    
+      
+        <title>错误和异常 - Python 学习记录</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c772ddf0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Microsoft+YaHei:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Microsoft YaHei";--md-code-font-family:""}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Python 学习记录" class="md-header__button md-logo" aria-label="Python 学习记录" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 学习记录
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              错误和异常
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      简介
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98/" class="md-tabs__link">
+        数据分析
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="md-tabs__link md-tabs__link--active">
+        Python 基础
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 学习记录" class="md-nav__button md-logo" aria-label="Python 学习记录" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Python 学习记录
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        简介
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        数据分析
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据分析" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          数据分析
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98/" class="md-nav__link">
+        数据读取与保存
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        数据清洗
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86/" class="md-nav__link">
+        数据整理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      <label class="md-nav__link" for="__nav_2_4">
+        数据可视化
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据可视化" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          数据可视化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/bar/" class="md-nav__link">
+        柱状图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/barh/" class="md-nav__link">
+        条形图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/bar_chart_race/" class="md-nav__link">
+        动态条形图/柱形图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/scatter/" class="md-nav__link">
+        散点图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/pie/" class="md-nav__link">
+        饼图
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Python 基础
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Python 基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Python 基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+        python基本语法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E4%B8%8E%E6%9D%A1%E4%BB%B6%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        循环语句与条件控制
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        函数
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        模块
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%B1%BB/" class="md-nav__link">
+        类
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          错误和异常
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        错误和异常
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 语法错误
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 处理异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 抛出异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 用户自定义异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    1.6 定义清理操作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    1.7 预定义的清理操作
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        输入与输出
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%8C%85/" class="md-nav__link">
+        虚拟环境和包
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 语法错误
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 处理异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 抛出异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 用户自定义异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    1.6 定义清理操作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    1.7 预定义的清理操作
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1"><strong><a href="https://docs.python.org/zh-cn/3/tutorial/errors.html">错误和异常</a></strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>Python 有两种错误很容易辨认：语法错误和异常。</p>
+<h2 id="11"><strong>1.1 语法错误</strong><a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<p>语法错误又称解析错误，是学习 Python 时最常见的错误：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="kc">True</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="kc">True</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
+                   <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</code></pre></div>
+<p>解析器会复现出现句法错误的代码行，并用小“箭头”指向行里检测到的第一个错误。错误是由箭头 <em>上方</em> 的 token 触发的（至少是在这里检测出的）：本例中，在 <a href="https://docs.python.org/zh-cn/3/library/functions.html#print"><code>print()</code></a> 函数中检测到错误，因为，在它前面缺少冒号（<code>':'</code>） 。错误信息还输出文件名与行号，在使用脚本文件时，就可以知道去哪里查错。</p>
+<h2 id="12"><strong>1.2 异常</strong><a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<p>即使语句或表达式的语法是正确的，执行时仍可能触发错误。执行时检测到的错误称为 <em>异常</em>，异常不一定导致严重的后果：很快我们就能学会如何处理 Python 的异常。大多数异常不会被程序处理，而是显示下列错误信息：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">ZeroDivisionError</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">spam</span><span class="o">*</span><span class="mi">3</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;spam&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;2&#39;</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">Can</span><span class="s1">&#39;t convert &#39;</span><span class="nb">int</span><span class="s1">&#39; object to str implicitly</span>
+</code></pre></div>
+<p>错误信息的最后一行说明程序遇到了什么类型的错误。异常有不同的类型，而类型名称会作为错误信息的一部分中打印出来：上述示例中的异常类型依次是：<a href="https://docs.python.org/zh-cn/3/library/exceptions.html#ZeroDivisionError"><code>ZeroDivisionError</code></a>， <a href="https://docs.python.org/zh-cn/3/library/exceptions.html#NameError"><code>NameError</code></a> 和 <a href="https://docs.python.org/zh-cn/3/library/exceptions.html#TypeError"><code>TypeError</code></a>。作为异常类型打印的字符串是发生的内置异常的名称。对于所有内置异常都是如此，但对于用户定义的异常则不一定如此（虽然这种规范很有用）。标准的异常类型是内置的标识符（不是保留关键字）。</p>
+<p>这一行的剩下的部分根据异常类型及其原因提供详细信息。</p>
+<p>错误消息的开头部分以堆栈回溯的形式显示发生异常的上下文。 通常它会包含列出源代码行的堆栈回溯；但是，它将不会显示从标准输入读取的行。</p>
+<p><a href="https://docs.python.org/zh-cn/3/library/exceptions.html#bltin-exceptions">内置异常</a> 列出了内置异常和它们的含义。</p>
+<h2 id="13"><strong>1.3 处理异常</strong><a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p>可以编写处理所选异常的程序。请看下面的例子，它会要求用户一直输入，直到输入的是一个有效的整数，但允许用户中断程序（使用 Control-C 或操作系统支持的其他操作）；请注意用户引起的中断可以通过引发 <a href="https://docs.python.org/zh-cn/3/library/exceptions.html#KeyboardInterrupt"><code>KeyboardInterrupt</code></a> 异常来指示。:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter a number: &quot;</span><span class="p">))</span>
+<span class="o">...</span>         <span class="k">break</span>
+<span class="o">...</span>     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="o">...</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Oops!  That was no valid number.  Try again...&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+</code></pre></div>
+<p><a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 语句的工作原理如下：</p>
+<ul>
+<li>首先，执行 <em>try 子句</em> （<a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 和 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#except"><code>except</code></a> 关键字之间的（多行）语句）。</li>
+<li>如果没有异常发生，则跳过 <em>except 子句</em> 并完成 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 语句的执行。</li>
+<li>如果在执行 try 子句时发生了异常，则跳过该子句中剩下的部分。 然后，如果异常的类型和 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#except"><code>except</code></a> 关键字后面的异常匹配，则执行 except 子句，然后继续执行 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 语句之后的代码。</li>
+<li>如果发生的异常和 except 子句中指定的异常不匹配，则将其传递到外部的 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 语句中；如果没有找到处理程序，则它是一个 <em>未处理异常</em>，执行将停止并显示如上所示的消息。</li>
+</ul>
+<p>一个 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 语句可能有多个 except 子句，以指定不同异常的处理程序。 最多会执行一个处理程序。 处理程序只处理相应的 try 子句中发生的异常，而不处理同一 <code>try</code> 语句内其他处理程序中的异常。 一个 except 子句可以将多个异常命名为带括号的元组，例如:</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span> <span class="k">except</span> <span class="p">(</span><span class="ne">RuntimeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">NameError</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">pass</span>
+</code></pre></div>
+<p>如果发生的异常和 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#except"><code>except</code></a> 子句中的类是同一个类或者是它的基类，则异常和 except 子句中的类是兼容的（但反过来则不成立 --- 列出派生类的 except 子句与基类不兼容）。 例如，下面的代码将依次打印 B, C, D</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="p">[</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="bp">cls</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">D</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">C</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">B</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>请注意如果 except 子句被颠倒（把 <code>except B</code> 放到第一个），它将打印 B，B，B --- 即第一个匹配的 except 子句被触发。</p>
+<p>最后的 except 子句可以省略异常名，以用作通配符。但请谨慎使用，因为以这种方式很容易掩盖真正的编程错误！它还可用于打印错误消息，然后重新引发异常（同样允许调用者处理异常）:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;myfile.txt&#39;</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OS error: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Could not convert data to an integer.&quot;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unexpected error:&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">raise</span>
+</code></pre></div>
+<p><a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> ... <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#except"><code>except</code></a> 语句有一个可选的 <em>else 子句</em>，在使用时必须放在所有的 except 子句后面。对于在 try 子句不引发异常时必须执行的代码来说很有用。 例如:</p>
+<div class="highlight"><pre><span></span><code>for arg in sys.argv[1:]:
+    try:
+        f = open(arg, &#39;r&#39;)
+    except OSError:
+        print(&#39;cannot open&#39;, arg)
+    else:
+        print(arg, &#39;has&#39;, len(f.readlines()), &#39;lines&#39;)
+        f.close()
+</code></pre></div>
+<p>使用 <code>else</code> 子句比向 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 子句添加额外的代码要好，因为它避免了意外捕获非 <code>try</code> ... <code>except</code> 语句保护的代码引发的异常。</p>
+<p>发生异常时，它可能具有关联值，也称为异常 <em>参数</em> 。参数的存在和类型取决于异常类型。</p>
+<p>except 子句可以在异常名称后面指定一个变量。这个变量和一个异常实例绑定，它的参数存储在 <code>instance.args</code> 中。为了方便起见，异常实例定义了 <a href="https://docs.python.org/zh-cn/3/reference/datamodel.html#object.__str__"><code>__str__()</code></a> ，因此可以直接打印参数而无需引用 <code>.args</code> 。也可以在抛出之前首先实例化异常，并根据需要向其添加任何属性。:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">inst</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">inst</span><span class="p">))</span>    <span class="c1"># the exception instance</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">inst</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>     <span class="c1"># arguments stored in .args</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>          <span class="c1"># __str__ allows args to be printed directly,</span>
+<span class="o">...</span>                          <span class="c1"># but may be overridden in exception subclasses</span>
+<span class="o">...</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">args</span>     <span class="c1"># unpack args</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">Exception</span><span class="s1">&#39;&gt;</span>
+<span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">spam</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">eggs</span>
+</code></pre></div>
+<p>如果异常有参数，则它们将作为未处理异常的消息的最后一部分（'详细信息'）打印。</p>
+<p>异常处理程序不仅处理 try 子句中遇到的异常，还处理 try 子句中调用（即使是间接地）的函数内部发生的异常。例如:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">this_fails</span><span class="p">():</span>
+<span class="o">...</span>     <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">this_fails</span><span class="p">()</span>
+<span class="o">...</span> <span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Handling run-time error:&#39;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">Handling</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">error</span><span class="p">:</span> <span class="n">division</span> <span class="n">by</span> <span class="n">zero</span>
+</code></pre></div>
+<h2 id="14"><strong>1.4 抛出异常</strong><a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
+<p>Python 使用 raise 语句抛出一个指定的异常。例如：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;HiThere&#39;</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">HiThere</span>
+</code></pre></div>
+<p><a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#raise"><code>raise</code></a> 唯一的参数就是要触发的异常。这个参数必须是异常实例或异常类（派生自 <a href="https://docs.python.org/zh-cn/3/library/exceptions.html#Exception"><code>Exception</code></a> 的类）。如果传递的是异常类，将通过调用没有参数的构造函数来隐式实例化：</p>
+<div class="highlight"><pre><span></span><code><span class="k">raise</span> <span class="ne">ValueError</span>  <span class="c1"># shorthand for &#39;raise ValueError()&#39;</span>
+</code></pre></div>
+<p>如果你需要确定是否引发了异常但不打算处理它，则可以使用更简单的 <a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#raise"><code>raise</code></a> 语句形式重新引发异常</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;HiThere&#39;</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;An exception flew by!&#39;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">raise</span>
+<span class="o">...</span>
+<span class="n">An</span> <span class="n">exception</span> <span class="n">flew</span> <span class="n">by</span><span class="err">!</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">HiThere</span>
+</code></pre></div>
+<h2 id="15"><strong>1.5 用户自定义异常</strong><a class="headerlink" href="#15" title="Permanent link">&para;</a></h2>
+<p>程序可以通过创建新的异常类来命名它们自己的异常（有关Python 类的更多信息，请参阅 <a href="https://docs.python.org/zh-cn/3/tutorial/classes.html#tut-classes">类</a>）。异常通常应该直接或间接地从 <a href="https://docs.python.org/zh-cn/3/library/exceptions.html#Exception"><code>Exception</code></a> 类派生。</p>
+<p>可以定义异常类，它可以执行任何其他类可以执行的任何操作，但通常保持简单，只提供一些属性，这些属性允许处理程序为异常提取有关错误的信息。 在创建可能引发多个不同错误的模块时，通常的做法是为该模块定义的异常创建基类，并为不同错误条件创建特定异常类的子类:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for exceptions in this module.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">InputError</span><span class="p">(</span><span class="n">Error</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Exception raised for errors in the input.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        expression -- input expression in which the error occurred</span>
+<span class="sd">        message -- explanation of the error</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expression</span> <span class="o">=</span> <span class="n">expression</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
+
+<span class="k">class</span> <span class="nc">TransitionError</span><span class="p">(</span><span class="n">Error</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raised when an operation attempts a state transition that&#39;s not</span>
+<span class="sd">    allowed.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        previous -- state at beginning of transition</span>
+<span class="sd">        next -- attempted new state</span>
+<span class="sd">        message -- explanation of why the specific transition is not allowed</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">previous</span><span class="p">,</span> <span class="nb">next</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">previous</span> <span class="o">=</span> <span class="n">previous</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span>
+</code></pre></div>
+<p>大多数异常都定义为名称以“Error”结尾，类似于标准异常的命名。</p>
+<p>许多标准模块定义了它们自己的异常，以报告它们定义的函数中可能出现的错误。有关类的更多信息，请参见 <a href="https://docs.python.org/zh-cn/3/tutorial/classes.html#tut-classes">类</a> 章节。</p>
+<h2 id="16"><strong>1.6 定义清理操作</strong><a class="headerlink" href="#16" title="Permanent link">&para;</a></h2>
+<p><a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 语句有另一个可选子句，用于定义必须在所有情况下执行的清理操作。例如:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
+<span class="o">...</span> <span class="k">finally</span><span class="p">:</span>
+<span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goodbye, world!&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">Goodbye</span><span class="p">,</span> <span class="n">world</span><span class="err">!</span>
+<span class="ne">KeyboardInterrupt</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>如果存在 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#finally"><code>finally</code></a> 子句，则 <code>finally</code> 子句将作为 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#try"><code>try</code></a> 语句结束前的最后一项任务被执行。 <code>finally</code> 子句不论 <code>try</code> 语句是否产生了异常都会被执行。 以下几点讨论了当异常发生时一些更复杂的情况：</p>
+<ul>
+<li>如果在执行 <code>try</code> 子句期间发生了异常，该异常可由一个 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#except"><code>except</code></a> 子句进行处理。 如果异常没有被某个 <code>except</code> 子句所处理，则该异常会在 <code>finally</code> 子句执行之后被重新引发。</li>
+<li>异常也可能在 <code>except</code> 或 <code>else</code> 子句执行期间发生。 同样地，该异常会在 <code>finally</code> 子句执行之后被重新引发。</li>
+<li>如果在执行 <code>try</code> 语句时遇到一个 <a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#break"><code>break</code></a>, <a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#continue"><code>continue</code></a> 或 <a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#return"><code>return</code></a> 语句，则 <code>finally</code> 子句将在执行 <code>break</code>, <code>continue</code> 或 <code>return</code> 语句之前被执行。</li>
+<li>如果 <code>finally</code> 子句中包含一个 <code>return</code> 语句，则返回值将来自 <code>finally</code> 子句的某个 <code>return</code> 语句的返回值，而非来自 <code>try</code> 子句的 <code>return</code> 语句的返回值。</li>
+</ul>
+<p>例如:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">bool_return</span><span class="p">():</span>
+<span class="o">...</span>     <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">return</span> <span class="kc">True</span>
+<span class="o">...</span>     <span class="k">finally</span><span class="p">:</span>
+<span class="o">...</span>         <span class="k">return</span> <span class="kc">False</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">bool_return</span><span class="p">()</span>
+<span class="kc">False</span>
+</code></pre></div>
+<p>一个更为复杂的例子:</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+<span class="o">...</span>     <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+<span class="o">...</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;division by zero!&quot;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;result is&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">finally</span><span class="p">:</span>
+<span class="o">...</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;executing finally clause&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">result</span> <span class="ow">is</span> <span class="mf">2.0</span>
+<span class="n">executing</span> <span class="k">finally</span> <span class="n">clause</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">divide</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">division</span> <span class="n">by</span> <span class="n">zero</span><span class="err">!</span>
+<span class="n">executing</span> <span class="k">finally</span> <span class="n">clause</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">divide</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="n">executing</span> <span class="k">finally</span> <span class="n">clause</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3</span><span class="p">,</span> <span class="ow">in</span> <span class="n">divide</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">/</span><span class="p">:</span> <span class="s1">&#39;str&#39;</span> <span class="ow">and</span> <span class="s1">&#39;str&#39;</span>
+</code></pre></div>
+<p>正如你所看到的，<a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#finally"><code>finally</code></a> 子句在任何情况下都会被执行。 两个字符串相除所引发的 <a href="https://docs.python.org/zh-cn/3/library/exceptions.html#TypeError"><code>TypeError</code></a> 不会由 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#except"><code>except</code></a> 子句处理，因此会在 <code>finally</code> 子句执行后被重新引发。</p>
+<p>在实际应用程序中，<a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#finally"><code>finally</code></a> 子句对于释放外部资源（例如文件或者网络连接）非常有用，无论是否成功使用资源。</p>
+<h2 id="17"><strong>1.7 预定义的清理操作</strong><a class="headerlink" href="#17" title="Permanent link">&para;</a></h2>
+<p>某些对象定义了在不再需要该对象时要执行的标准清理操作，无论使用该对象的操作是成功还是失败，清理操作都会被执行。 请查看下面的示例，它尝试打开一个文件并把其内容打印到屏幕上。:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;myfile.txt&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>这个代码的问题在于，它在这部分代码执行完后，会使文件在一段不确定的时间内处于打开状态。这在简单脚本中不是问题，但对于较大的应用程序来说可能是个问题。 <a href="https://docs.python.org/zh-cn/3/reference/compound_stmts.html#with"><code>with</code></a> 语句允许像文件这样的对象能够以一种确保它们得到及时和正确的清理的方式使用。:</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;myfile.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>执行完语句后，即使在处理行时遇到问题，文件 <em>f</em> 也始终会被关闭。和文件一样，提供预定义清理操作的对象将在其文档中指出这一点。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../%E7%B1%BB/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              类
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              输入与输出
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<chong_xuan_zhang@163.com>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2 12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.65ce87ac.min.js"></script>
+      
+    
+  </body>
+</html>

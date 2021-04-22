@@ -1,0 +1,996 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.7">
+    
+    
+      
+        <title>模块 - Python 学习记录</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c772ddf0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Microsoft+YaHei:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Microsoft YaHei";--md-code-font-family:""}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Python 学习记录" class="md-header__button md-logo" aria-label="Python 学习记录" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 学习记录
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              模块
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      简介
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98/" class="md-tabs__link">
+        数据分析
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="md-tabs__link md-tabs__link--active">
+        Python 基础
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Python 学习记录" class="md-nav__button md-logo" aria-label="Python 学习记录" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Python 学习记录
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        简介
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        数据分析
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据分析" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          数据分析
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98/" class="md-nav__link">
+        数据读取与保存
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        数据清洗
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86/" class="md-nav__link">
+        数据整理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      <label class="md-nav__link" for="__nav_2_4">
+        数据可视化
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据可视化" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          数据可视化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/bar/" class="md-nav__link">
+        柱状图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/barh/" class="md-nav__link">
+        条形图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/bar_chart_race/" class="md-nav__link">
+        动态条形图/柱形图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/scatter/" class="md-nav__link">
+        散点图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/pie/" class="md-nav__link">
+        饼图
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Python 基础
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Python 基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Python 基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+        python基本语法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E4%B8%8E%E6%9D%A1%E4%BB%B6%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        循环语句与条件控制
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        函数
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          模块
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        模块
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 模块详解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-__name__" class="md-nav__link">
+    1.2 __name__属性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-dir" class="md-nav__link">
+    1.3 dir() 函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 标准模块
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 包
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#151" class="md-nav__link">
+    1.5.1 从包中导入*
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#152" class="md-nav__link">
+    1.5.2 子包参考
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#153" class="md-nav__link">
+    1.5.3 多目录中的包
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%B1%BB/" class="md-nav__link">
+        类
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%94%99%E8%AF%AF%E5%92%8C%E5%BC%82%E5%B8%B8/" class="md-nav__link">
+        错误和异常
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        输入与输出
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%8C%85/" class="md-nav__link">
+        虚拟环境和包
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 模块详解
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-__name__" class="md-nav__link">
+    1.2 __name__属性
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-dir" class="md-nav__link">
+    1.3 dir() 函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 标准模块
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 包
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#151" class="md-nav__link">
+    1.5.1 从包中导入*
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#152" class="md-nav__link">
+    1.5.2 子包参考
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#153" class="md-nav__link">
+    1.5.3 多目录中的包
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1"><strong><a href="https://docs.python.org/zh-cn/3/tutorial/modules.html">模块</a></strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>如果从 Python 解释器退出再进入，那么之前定义的所有的方法和变量就都消失了。为此 Python 提供了一个办法，把这些定义存放在文件中，为一些脚本或者交互式的解释器实例使用，这个文件被称为模块。</p>
+<p>模块是包含 Python 定义和语句的文件；其文件名是模块名加后缀名 <code>.py</code> ，模块名命名规则与变量命名一致。在模块内部，通过全局变量 <code>__name__</code> 可以获取模块名（即字符串）。</p>
+<p>例如，用文本编辑器在当前目录下创建 <code>fibo.py</code> 文件，输入以下内容：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 文件名：fibo.py</span>
+<span class="c1"># Fibonacci numbers module</span>
+<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>    <span class="c1"># write Fibonacci series up to n</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">fib2</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>   <span class="c1"># return Fibonacci series up to n</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>现在，进入 Python 解释器，用以下命令导入该模块：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">fibo</span>
+</code></pre></div>
+<p>这项操作不直接把 <code>fibo</code> 函数定义的名称导入到当前符号表，只导入模块名 <code>fibo</code> 。要使用模块名访问函数：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">fibo</span><span class="o">.</span><span class="n">fib</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span> <span class="mi">13</span> <span class="mi">21</span> <span class="mi">34</span> <span class="mi">55</span> <span class="mi">89</span> <span class="mi">144</span> <span class="mi">233</span> <span class="mi">377</span> <span class="mi">610</span> <span class="mi">987</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fibo</span><span class="o">.</span><span class="n">fib2</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fibo</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="s1">&#39;fibo&#39;</span>
+</code></pre></div>
+<p>如果经常使用某个函数，可以把它赋值给局部变量：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span> <span class="o">=</span> <span class="n">fibo</span><span class="o">.</span><span class="n">fib</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span> <span class="mi">13</span> <span class="mi">21</span> <span class="mi">34</span> <span class="mi">55</span> <span class="mi">89</span> <span class="mi">144</span> <span class="mi">233</span> <span class="mi">377</span>
+</code></pre></div>
+<h2 id="11"><strong>1.1 模块详解</strong><a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<p>模块包含可执行语句及函数定义。这些语句用于初始化模块，且仅在 import 语句 <em>第一次</em> 遇到模块名时执行 (文件作为脚本运行时，也会执行这些语句。)</p>
+<p>模块有自己的私有符号表，用作模块中所有函数的全局符号表。因此，在模块内使用全局变量时，不用担心与用户定义的全局变量发生冲突。另一方面，可以用与访问模块函数一样的标记法，访问模块的全局变量，<code>modname.itemname</code>。</p>
+<p>可以把其他模块导入模块。按惯例，所有 <a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#import"><code>import</code></a> 语句都放在模块（或脚本）开头，但这不是必须的。导入的模块名存在导入模块的全局符号表里。</p>
+<p><a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#import"><code>import</code></a> 语句有一个变体，可以直接把模块里的名称导入到另一个模块。例如：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">fibo</span> <span class="kn">import</span> <span class="n">fib</span><span class="p">,</span> <span class="n">fib2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span> <span class="mi">13</span> <span class="mi">21</span> <span class="mi">34</span> <span class="mi">55</span> <span class="mi">89</span> <span class="mi">144</span> <span class="mi">233</span> <span class="mi">377</span>
+</code></pre></div>
+<p>这段代码不会把模块名导入到局部符号表里（因此，本例没有定义 <code>fibo</code>）。</p>
+<p>还有一种变体可以导入模块内定义的所有名称：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">fibo</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span> <span class="mi">13</span> <span class="mi">21</span> <span class="mi">34</span> <span class="mi">55</span> <span class="mi">89</span> <span class="mi">144</span> <span class="mi">233</span> <span class="mi">377</span>
+</code></pre></div>
+<p><strong>这种方式会导入所有不以下划线（<code>_</code>）开头的名称</strong>。大多数情况下，不要用这个功能，这种方式向解释器导入了一批未知的名称，可能会覆盖已经定义的名称。</p>
+<p>注意，一般情况下，不建议从模块或包内导入 <code>*</code>， 因为，这项操作经常让代码变得难以理解。不过，为了在交互式编译器中少打几个字，这么用也没问题。</p>
+<p>模块名后使用 <code>as</code> 时，直接把 <code>as</code> 后的名称与导入模块绑定。</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">fibo</span> <span class="k">as</span> <span class="nn">fib</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fib</span><span class="o">.</span><span class="n">fib</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span> <span class="mi">13</span> <span class="mi">21</span> <span class="mi">34</span> <span class="mi">55</span> <span class="mi">89</span> <span class="mi">144</span> <span class="mi">233</span> <span class="mi">377</span>
+</code></pre></div>
+<p>与 <code>import fibo</code> 一样，这种方式也可以有效地导入模块，唯一的区别是，导入的名称是 <code>fib</code>。</p>
+<p><a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#from"><code>from</code></a> 中也可以使用这种方式，效果类似：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">fibo</span> <span class="kn">import</span> <span class="n">fib</span> <span class="k">as</span> <span class="n">fibonacci</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span> <span class="mi">13</span> <span class="mi">21</span> <span class="mi">34</span> <span class="mi">55</span> <span class="mi">89</span> <span class="mi">144</span> <span class="mi">233</span> <span class="mi">377</span>
+</code></pre></div>
+<p>**注解:**为了保证运行效率，每次解释器会话只导入一次模块。如果更改了模块内容，必须重启解释器；仅交互测试一个模块时，也可以使用 <a href="https://docs.python.org/zh-cn/3/library/importlib.html#importlib.reload"><code>importlib.reload()</code></a>，例如 <code>import importlib; importlib.reload(modulename)</code>。</p>
+<h2 id="12-__name__"><strong>1.2 <code>__name__</code>属性</strong><a class="headerlink" href="#12-__name__" title="Permanent link">&para;</a></h2>
+<p>一个模块被另一个程序第一次引入时，其主程序将运行。如果我们想在模块被引入时，模块中的某一程序块不执行，我们可以用__name__属性来使该程序块仅在该模块自身运行时执行。</p>
+<p><strong>说明：</strong> 每个模块都有一个__name__属性，当其值是'<strong>main</strong>'时，表明该模块自身在运行，否则是被引入；<strong><code>__name__</code></strong> 与 <strong><code>__main__</code></strong> 底下是双下划线。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Filename:using_name.py</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;程序自身在运行&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;我来自另一模块&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>以脚本方式执行模块结果：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 模块是用IDLE编写，要执行模块，只需将编写好的代码，保存-F5</span>
+<span class="o">=</span> <span class="n">RESTART</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">Administrator</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python39</span>\<span class="n">using_name</span><span class="o">.</span><span class="n">py</span>
+<span class="n">程序自身在运行</span>
+</code></pre></div>
+<p>既可以把这个文件当脚本使用，也可以用作导入的模块；导入模块时：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">using_name</span>
+<span class="c1"># 我来自另一个模块</span>
+</code></pre></div>
+<h2 id="13-dir"><strong>1.3 dir() 函数</strong><a class="headerlink" href="#13-dir" title="Permanent link">&para;</a></h2>
+<p>内置函数 <a href="https://docs.python.org/zh-cn/3/library/functions.html#dir"><code>dir()</code></a> 用于查找模块定义的名称。返回结果是经过排序的字符串列表：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">fibo</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">fibo</span><span class="p">))</span>
+<span class="c1"># 输出结果：</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[&#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;fib&#39;, &#39;fib2&#39;]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</code></pre></div>
+<p>如果没有给定参数，那么 dir() 函数会罗列出当前定义的所有名称:</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">fibo</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">())</span>
+<span class="c1"># 输出结果：</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[&#39;__annotations__&#39;, &#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;a&#39;, &#39;fibo&#39;]&#39;&#39;&#39;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">())</span>
+<span class="c1"># 输出结果：</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">[&#39;__annotations__&#39;, &#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;a&#39;, &#39;b&#39;, &#39;fibo&#39;]&#39;&#39;&#39;</span>
+</code></pre></div>
+<h2 id="14"><strong>1.4 标准模块</strong><a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
+<p>Python 附带了标准模块库，详见 Python 标准库参考手册。特别要注意内嵌到 Python 解释器中的模块 <a href="https://docs.python.org/zh-cn/3/library/sys.html#module-sys"><code>sys</code></a>。变量 <code>sys.ps1</code> 和 <code>sys.ps2</code> 则用来定义主次提示的字符串：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">ps1</span>
+<span class="s1">&#39;&gt;&gt;&gt; &#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">ps2</span>
+<span class="s1">&#39;... &#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">ps1</span> <span class="o">=</span> <span class="s1">&#39;C&gt; &#39;</span>
+<span class="n">C</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Yuck!&#39;</span><span class="p">)</span>
+<span class="n">Yuck</span><span class="err">!</span>
+<span class="n">C</span><span class="o">&gt;</span>
+</code></pre></div>
+<p>只有解释器用于交互模式时，才定义这两个变量。</p>
+<p>变量 <code>sys.path</code> 是字符串列表，用于确定解释器的模块搜索路径；导入 <code>spam</code> 模块时，解释器首先查找名为 spam 的内置模块，如果没找到，解释器再从 <a href="https://docs.python.org/zh-cn/3/library/sys.html#sys.path"><code>sys.path</code></a> 变量中的目录列表里查找 <code>spam.py</code> 文件。该变量以环境变量 <a href="https://docs.python.org/zh-cn/3/using/cmdline.html#envvar-PYTHONPATH"><code>PYTHONPATH</code></a> 提取的默认路径进行初始化，如未设置 <a href="https://docs.python.org/zh-cn/3/using/cmdline.html#envvar-PYTHONPATH"><code>PYTHONPATH</code></a>，则使用内置的默认路径。可以用标准列表操作修改该变量：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/ufs/guido/lib/python&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="15"><strong>1.5 包</strong><a class="headerlink" href="#15" title="Permanent link">&para;</a></h2>
+<p>包是一种管理 Python 模块命名空间的形式，采用"点模块名称"。</p>
+<p>比如一个模块的名称是 A.B， 那么他表示一个包 A中的子模块 B 。</p>
+<p>就好像使用模块的时候，你不用担心不同模块之间的全局变量相互影响一样，采用点模块名称这种形式也不用担心不同库之间的模块重名的情况。</p>
+<p>这样不同的作者都可以提供 NumPy 模块，或者是 Python 图形库。</p>
+<p>不妨假设你想设计一套统一处理声音文件和数据的模块（或者称之为一个"包"）。</p>
+<p>现存很多种不同的音频文件格式（基本上都是通过后缀名区分的，例如： .wav，:file:.aiff，:file:.au，），所以你需要有一组不断增加的模块，用来在不同的格式之间转换。</p>
+<p>并且针对这些音频数据，还有很多不同的操作（比如混音，添加回声，增加均衡器功能，创建人造立体声效果），所以你还需要一组怎么也写不完的模块来处理这些操作。</p>
+<p>这里给出了一种可能的包结构（在分层的文件系统中）:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ound</span><span class="o">/</span>                          <span class="n">Top</span><span class="o">-</span><span class="n">level</span> <span class="n">package</span>
+      <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>               <span class="n">Initialize</span> <span class="n">the</span> <span class="n">sound</span> <span class="n">package</span>
+      <span class="n">formats</span><span class="o">/</span>                  <span class="n">Subpackage</span> <span class="k">for</span> <span class="n">file</span> <span class="nb">format</span> <span class="n">conversions</span>
+              <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">wavread</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">wavwrite</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">aiffread</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">aiffwrite</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">auread</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">auwrite</span><span class="o">.</span><span class="n">py</span>
+              <span class="o">...</span>
+      <span class="n">effects</span><span class="o">/</span>                  <span class="n">Subpackage</span> <span class="k">for</span> <span class="n">sound</span> <span class="n">effects</span>
+              <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">echo</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">surround</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">reverse</span><span class="o">.</span><span class="n">py</span>
+              <span class="o">...</span>
+      <span class="n">filters</span><span class="o">/</span>                  <span class="n">Subpackage</span> <span class="k">for</span> <span class="n">filters</span>
+              <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">equalizer</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">vocoder</span><span class="o">.</span><span class="n">py</span>
+              <span class="n">karaoke</span><span class="o">.</span><span class="n">py</span>
+              <span class="o">...</span>
+</code></pre></div>
+<p>导入包时，Python 搜索 <code>sys.path</code> 里的目录，查找包的子目录。</p>
+<p>Python 只把含 <code>__init__.py</code> 文件的目录当成包。这样可以防止以 <code>string</code> 等通用名称命名的目录，无意中屏蔽出现在后方模块搜索路径中的有效模块。 最简情况下，<code>__init__.py</code> 只是一个空文件，但该文件也可以执行包的初始化代码，或设置 <code>__all__</code> 变量，详见下文。</p>
+<p>还可以从包中导入单个模块，例如：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sound.effects.echo</span>
+</code></pre></div>
+<p>这段代码加载子模块 <code>sound.effects.echo</code> ，但引用时必须使用子模块的全名：</p>
+<div class="highlight"><pre><span></span><code><span class="n">sound</span><span class="o">.</span><span class="n">effects</span><span class="o">.</span><span class="n">echo</span><span class="o">.</span><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<p>另一种导入子模块的方法是 ：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sound.effects</span> <span class="kn">import</span> <span class="n">echo</span>
+</code></pre></div>
+<p>这段代码还可以加载子模块 <code>echo</code> ，并且不加包前缀也可以使用。因此，可以按如下方式使用：</p>
+<div class="highlight"><pre><span></span><code><span class="n">echo</span><span class="o">.</span><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<p>另一种变体是直接导入所需的函数或变量：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sound.effects.echo</span> <span class="kn">import</span> <span class="n">echofilter</span>
+</code></pre></div>
+<p>同样，这样也会加载子模块 <code>echo</code>，但可以直接使用函数 <code>echofilter()</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<p>注意，使用 <code>from package import item</code> 时，item 可以是包的子模块（或子包），也可以是包中定义的函数、类或变量等其他名称。<code>import</code> 语句首先测试包中是否定义了 item；如果未在包中定义，则假定 item 是模块，并尝试加载。如果找不到 item，则触发 <a href="https://docs.python.org/zh-cn/3/library/exceptions.html#ImportError"><code>ImportError</code></a> 异常。</p>
+<p>相反，使用 <code>import item.subitem.subsubitem</code> 句法时，除最后一项外，每个 item 都必须是包；最后一项可以是模块或包，但不能是上一项中定义的类、函数或变量。</p>
+<h2 id="151"><strong>1.5.1 从包中导入*</strong><a class="headerlink" href="#151" title="Permanent link">&para;</a></h2>
+<p>使用 <code>from sound.effects import *</code> 时会发生什么？理想情况下，该语句在文件系统查找并导入包的所有子模块。这项操作花费的时间较长，并且导入子模块可能会产生不必要的副作用，这种副作用只有在显式导入子模块时才会发生。</p>
+<p>唯一的解决方案是提供包的显式索引。<a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#import"><code>import</code></a> 语句使用如下惯例：如果包的 <code>__init__.py</code> 代码定义了列表 <code>__all__</code>，运行 <code>from package import *</code> 时，它就是用于导入的模块名列表。发布包的新版本时，包的作者应更新此列表。如果包的作者认为没有必要在包中执行导入 * 操作，也可以不提供此列表。例如，<code>sound/effects/__init__.py</code> 文件包含以下代码：</p>
+<div class="highlight"><pre><span></span><code><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span> <span class="s2">&quot;surround&quot;</span><span class="p">,</span> <span class="s2">&quot;reverse&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>即，<code>from sound.effects import *</code> 将导入 <code>sound</code> 包中的这三个命名子模块。</p>
+<p>如果没有定义 <code>__all__</code>，<code>from sound.effects import *</code> 语句 <em>不会</em> 把包 <code>sound.effects</code> 中所有子模块都导入到当前命名空间；该语句只确保导入包 <code>sound.effects</code> （可能还会运行 <code>__init__.py</code> 中的初始化代码），然后，再导入包中定义的名称。这些名称包括 <code>__init__.py</code> 中定义的任何名称（以及显式加载的子模块），还包括之前 <a href="https://docs.python.org/zh-cn/3/reference/simple_stmts.html#import"><code>import</code></a> 语句显式加载的包里的子模块。请看以下代码：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sound.effects.echo</span>
+<span class="kn">import</span> <span class="nn">sound.effects.surround</span>
+<span class="kn">from</span> <span class="nn">sound.effects</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+<p>本例中，执行 <code>from...import</code> 语句时，将把 <code>echo</code> 和 <code>surround</code> 模块导入至当前命名空间，因为，它们是在 <code>sound.effects</code> 包里定义的。（该导入操作在定义了 <code>__all__</code> 时也有效。）</p>
+<p>虽然，可以把模块设计为用 <code>import *</code> 时只导出遵循指定模式的名称，但仍不提倡在生产代码中使用这种做法。</p>
+<p>记住，使用 <code>from package import specific_submodule</code> 没有任何问题！ 实际上，除了导入模块使用不同包的同名子模块之外，这种方式是推荐用法。</p>
+<h2 id="152"><strong>1.5.2 子包参考</strong><a class="headerlink" href="#152" title="Permanent link">&para;</a></h2>
+<p>包中含有多个子包时（与示例中的 <code>sound</code> 包一样），可以使用绝对导入引用兄弟包中的子模块。例如，要在模块 <code>sound.filters.vocoder</code> 中使用 <code>sound.effects</code> 包的 <code>echo</code> 模块时，可以用 <code>from sound.effects import echo</code> 导入。</p>
+<p>还可以用 import 语句的 <code>from module import name</code> 形式执行相对导入。这些导入语句使用前导句点表示相对导入中的当前包和父包。例如，相对于 <code>surround</code> 模块，可以使用：</p>
+<div class="highlight"><pre><span></span><code>from . import echo
+from .. import formats
+from ..filters import equalizer
+</code></pre></div>
+<p>注意，相对导入基于当前模块名。因为主模块名是 <code>"__main__"</code> ，所以 Python 程序的主模块必须始终使用绝对导入。</p>
+<h2 id="153"><strong>1.5.3 多目录中的包</strong><a class="headerlink" href="#153" title="Permanent link">&para;</a></h2>
+<p>包还支持特殊属性 <a href="https://docs.python.org/zh-cn/3/reference/import.html#__path__"><code>__path__</code></a>。该属性初始化为在包的 <code>__init__.py</code> 文件中的代码执行前所在的目录名列表。这个变量可以修改，但这样做会影响将来搜索包中模块和子包的操作。</p>
+<p>这个功能虽然不常用，但可用于扩展包中的模块集。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../%E5%87%BD%E6%95%B0/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              函数
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../%E7%B1%BB/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              类
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<chong_xuan_zhang@163.com>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2 12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.65ce87ac.min.js"></script>
+      
+    
+  </body>
+</html>
