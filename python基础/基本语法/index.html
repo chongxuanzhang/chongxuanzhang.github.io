@@ -23,6 +23,10 @@
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
         
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
       
     
     
@@ -48,7 +52,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="">
       
   
     
@@ -627,6 +631,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        装饰器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../%E6%A8%A1%E5%9D%97/" class="md-nav__link">
         模块
       </a>
@@ -867,7 +883,7 @@
 <p>这是 Bram Moolenaar 的 VIM 认可的形式。</p>
 <p><strong>没有编码声明时，默认编码为 <code>UTF-8</code>；声明的编码名称必须是 Python 能识别的。语义字符串、注释和标识符等词法分析都使用此编码</strong>。</p>
 <h2 id="12"><strong>1.2 注释</strong><a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
-<p>注释以井号 （<code>#</code>） 开头，在物理行末尾截止。注意，井号不是字符串字面值。除非应用隐式行拼接规则，否则，注释代表逻辑行结束。句法不解析注释。</p>
+<p>python单行注释以井号 （<code>#</code>）开头；多行注释可以用多个<code>#</code>号，还有两个 ''' 和两个 """</p>
 <h2 id="13"><strong>1.3 多行语句</strong><a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
 <h3 id="131"><strong>1.3.1 显式拼接行</strong><a class="headerlink" href="#131" title="Permanent link">&para;</a></h3>
 <p>两个及两个以上的物理行可用反斜杠（<code>\</code>）拼接为一个逻辑行，规则如下：以不在字符串或注释内的反斜杠结尾时，物理行将与下一行拼接成一个逻辑行，并删除反斜杠及其后的换行符。例如：</p>
@@ -930,12 +946,12 @@
 </ul>
 <p>类的私有名称。类定义时，此类名称以一种混合形式重写，以避免基类及派生类的 "私有" 属性之间产生名称冲突。详见 <a href="https://docs.python.org/zh-cn/3/reference/expressions.html#atom-identifiers">标识符（名称）</a>。</p>
 <h2 id="15"><strong>1.5 行与缩进</strong><a class="headerlink" href="#15" title="Permanent link">&para;</a></h2>
-<p>python最具特色的就是使用缩进来表示代码块，不需要使用大括号 <strong>{}</strong> 。</p>
+<p>python最具特色的就是使用缩进来表示代码块，不需要使用大括号 <code>{}</code>。</p>
 <p>缩进的空格数是可变的，但是同一个代码块的语句必须包含相同的缩进空格数；逻辑行开头的空白符（空格符和制表符）用于计算该行的缩进层级，决定语句组块。</p>
 <h2 id="16"><strong>1.6 空行</strong><a class="headerlink" href="#16" title="Permanent link">&para;</a></h2>
 <p>函数之间或类的方法之间用空行分隔，表示一段新的代码的开始。类和函数入口之间也用一行空行分隔，以突出函数入口的开始。</p>
 <p>空行与代码缩进不同，空行并不是Python语法的一部分。书写时不插入空行，Python解释器运行也不会出错。但是空行的作用在于分隔两段不同功能或含义的代码，便于日后代码的维护或重构。</p>
-<p>**记住：**空行也是程序代码的一部分。</p>
+<p><strong>记住：</strong> 空行也是程序代码的一部分。</p>
 <h2 id="17"><strong>1.7 字符串</strong><a class="headerlink" href="#17" title="Permanent link">&para;</a></h2>
 <ul>
 <li>python中单引号和双引号使用完全相同。</li>

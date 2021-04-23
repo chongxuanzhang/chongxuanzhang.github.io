@@ -23,6 +23,10 @@
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
         
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
       
     
     
@@ -48,7 +52,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="">
       
   
     
@@ -465,6 +469,18 @@
   
   
     <li class="md-nav__item">
+      <a href="../%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        装饰器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../%E6%A8%A1%E5%9D%97/" class="md-nav__link">
         模块
       </a>
@@ -793,7 +809,7 @@
 <span class="s2">&quot;(32.5, 40000, (&#39;spam&#39;, &#39;eggs&#39;))&quot;</span>
 </code></pre></div>
 <h3 id="111-f-"><strong>1.1.1 格式化字符串字面值（f-字符串）</strong><a class="headerlink" href="#111-f-" title="Permanent link">&para;</a></h3>
-<p>**f-字符串**是在字符串前加前缀 <code>f</code> 或 <code>F</code>，通过 <code>{expression}</code> 表达式，把 Python 表达式的值添加到字符串内。格式说明符是可选的，写在表达式后面，可以更好地控制格式化值的方式。下例将 <code>pi</code> 四舍五入 到小数点后三位：</p>
+<p><strong>f-字符串</strong> 是在字符串前加前缀 <code>f</code> 或 <code>F</code>，通过 <code>{expression}</code> 表达式，把 Python 表达式的值添加到字符串内。格式说明符是可选的，写在表达式后面，可以更好地控制格式化值的方式。下例将 <code>pi</code> 四舍五入 到小数点后三位：</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">math</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi is approximately </span><span class="si">{</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
 <span class="n">The</span> <span class="n">value</span> <span class="n">of</span> <span class="n">pi</span> <span class="ow">is</span> <span class="n">approximately</span> <span class="mf">3.142</span><span class="o">.</span>
@@ -977,7 +993,7 @@
 <h3 id="122-json"><strong>1.2.2 使用 json 保存结构化数据</strong><a class="headerlink" href="#122-json" title="Permanent link">&para;</a></h3>
 <p>从文件写入或读取字符串很简单，数字则稍显麻烦，因为 <code>read()</code> 方法只返回字符串，这些字符串必须传递给 <a href="https://docs.python.org/zh-cn/3/library/functions.html#int"><code>int()</code></a> 这样的函数，接受 <code>'123'</code> 这样的字符串，并返回数字值 123。保存嵌套列表、字典等复杂数据类型时，手动解析和序列化的操作非常复杂。</p>
 <p>Python 支持 <a href="http://json.org/">JSON (JavaScript Object Notation)</a> 这种流行数据交换格式，用户无需没完没了地编写、调试代码，才能把复杂的数据类型保存到文件。<a href="https://docs.python.org/zh-cn/3/library/json.html#module-json"><code>json</code></a> 标准模块采用 Python 数据层次结构，并将之转换为字符串表示形式；这个过程称为 <em>serializing</em> （序列化）。从字符串表示中重建数据称为 <em>deserializing</em> （解序化）。在序列化和解序化之间，表示对象的字符串可能已经存储在文件或数据中，或通过网络连接发送到远方 的机器。</p>
-<p>**注解：**JSON 格式通常用于现代应用程序的数据交换。程序员早已对它耳熟能详，可谓是交互操作的不二之选。</p>
+<p><strong>注解：</strong> JSON 格式通常用于现代应用程序的数据交换。程序员早已对它耳熟能详，可谓是交互操作的不二之选。</p>
 <p>只需一行简单的代码即可查看某个对象的 JSON 字符串表现形式：</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">json</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;simple&#39;</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">])</span>

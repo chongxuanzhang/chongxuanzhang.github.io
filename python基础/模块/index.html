@@ -23,6 +23,10 @@
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
         
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
       
     
     
@@ -48,7 +52,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="">
       
   
     
@@ -463,6 +467,18 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        装饰器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -771,7 +787,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">fibonacci</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
 <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span> <span class="mi">13</span> <span class="mi">21</span> <span class="mi">34</span> <span class="mi">55</span> <span class="mi">89</span> <span class="mi">144</span> <span class="mi">233</span> <span class="mi">377</span>
 </code></pre></div>
-<p>**注解:**为了保证运行效率，每次解释器会话只导入一次模块。如果更改了模块内容，必须重启解释器；仅交互测试一个模块时，也可以使用 <a href="https://docs.python.org/zh-cn/3/library/importlib.html#importlib.reload"><code>importlib.reload()</code></a>，例如 <code>import importlib; importlib.reload(modulename)</code>。</p>
+<p><strong>注解:</strong> 为了保证运行效率，每次解释器会话只导入一次模块。如果更改了模块内容，必须重启解释器；仅交互测试一个模块时，也可以使用 <a href="https://docs.python.org/zh-cn/3/library/importlib.html#importlib.reload"><code>importlib.reload()</code></a>，例如 <code>import importlib; importlib.reload(modulename)</code>。</p>
 <h2 id="12-__name__"><strong>1.2 <code>__name__</code>属性</strong><a class="headerlink" href="#12-__name__" title="Permanent link">&para;</a></h2>
 <p>一个模块被另一个程序第一次引入时，其主程序将运行。如果我们想在模块被引入时，模块中的某一程序块不执行，我们可以用__name__属性来使该程序块仅在该模块自身运行时执行。</p>
 <p><strong>说明：</strong> 每个模块都有一个__name__属性，当其值是'<strong>main</strong>'时，表明该模块自身在运行，否则是被引入；<strong><code>__name__</code></strong> 与 <strong><code>__main__</code></strong> 底下是双下划线。</p>
@@ -926,7 +942,7 @@ from ..filters import equalizer
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../%E5%87%BD%E6%95%B0/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -935,7 +951,7 @@ from ..filters import equalizer
               <span class="md-footer__direction">
                 Previous
               </span>
-              函数
+              装饰器
             </div>
           </div>
         </a>
