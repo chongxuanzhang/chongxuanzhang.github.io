@@ -783,26 +783,18 @@
 </ul>
 <p>默认匹配除换行符外的任意字符；如果指定了标签 <a href="https://docs.python.org/zh-cn/3/library/re.html#re.DOTALL"><code>DOTALL</code></a> ，它将匹配包括换行符的任意字符。</p>
 <ul>
-<li>
-<p><code>[]</code> 表示一个字符集合</p>
-</li>
-<li>
-<p>字符可以单独列出，例如：<code>[amk]</code>匹配a或m或k。</p>
-</li>
-<li>通过<code>-</code>表示字符范围，例如：<code>[a-z]</code>只匹配小写字母；如果 <code>-</code> 进行了转义 （比如 <code>[a\-z]</code>）或者它的位置在首位或者末尾（如 <code>[-a]</code> 或 <code>[a-]</code>），它就只表示普通字符 <code>'-'</code>。</li>
-<li><code>^</code> 支持反取，例如：<code>[^5]</code> 将匹配除 <code>'5'</code> 之外的任何字符；如果插入符出现在字符类的其他位置，则它没有特殊含义。 例如：<code>[5^]</code> 将匹配 <code>'5'</code> 或 <code>'^'</code>。</li>
-<li>
-<p>要匹配一个字符 <code>']'</code>，可以通过转义符<code>\</code>：<code>\[</code></p>
-</li>
-<li>
-<p><code>^</code> </p>
-</li>
-<li>
-<p>匹配字符串开头</p>
-</li>
-<li>
-<p>在<code>[]</code>开始位置，表示反取</p>
-</li>
+<li><code>[]</code> 表示一个字符集合</li>
+</ul>
+<p>(1) 字符可以单独列出，例如：<code>[amk]</code>匹配a或m或k。  </p>
+<p>(2) 通过<code>-</code>表示字符范围，例如：<code>[a-z]</code>只匹配小写字母；如果 <code>-</code> 进行了转义 （比如 <code>[a\-z]</code>）或者它的位置在首位或者末尾（如 <code>[-a]</code> 或 <code>[a-]</code>），它就只表示普通字符 <code>'-'</code>。  </p>
+<p>(3) <code>^</code> 支持反取，例如：<code>[^5]</code> 将匹配除 <code>'5'</code> 之外的任何字符；如果插入符出现在字符类的其他位置，则它没有特殊含义。 例如：<code>[5^]</code> 将匹配 <code>'5'</code> 或 <code>'^'</code>。  </p>
+<p>(4) 要匹配一个字符 <code>']'</code>，可以通过转义符<code>\</code>：<code>\[</code></p>
+<ul>
+<li><code>^</code> </li>
+</ul>
+<p>(1) 匹配字符串开头  </p>
+<p>(2) 在<code>[]</code>开始位置，表示反取</p>
+<ul>
 <li>
 <p><code>*</code> 对它前面的正则式匹配0到任意次重复， 尽量多的匹配字符串。 <code>ab*</code> 会匹配 <code>'a'</code>，<code>'ab'</code>，或者 <code>'a'</code> 后面跟随任意个 <code>'b'</code>。</p>
 </li>
@@ -812,12 +804,10 @@
 <li>
 <p><code>?</code> </p>
 </li>
-<li>
-<p>对它前面的正则式匹配0到1次重复。 <code>ab?</code> 会匹配 <code>'a'</code> 或者 <code>'ab'</code>。</p>
-</li>
-<li>
-<p>贪婪模式开关</p>
-</li>
+</ul>
+<p>(1) 对它前面的正则式匹配0到1次重复。 <code>ab?</code> 会匹配 <code>'a'</code> 或者 <code>'ab'</code>。  </p>
+<p>(2) 贪婪模式开关</p>
+<ul>
 <li>
 <p><code>{m}</code> 对其之前的正则式指定匹配 <em>m</em> 个重复；少于 <em>m</em> 的话就会导致匹配失败。比如， <code>a{6}</code> 将匹配6个 <code>'a'</code> , 但是不能是5个。</p>
 </li>
@@ -833,11 +823,9 @@
 <li>
 <p><code>\</code> </p>
 </li>
-<li>
-<p>转义字符</p>
-</li>
-<li>一些以 <code>'\'</code> 开头的特殊序列表示通常有用的预定义字符集，例如数字集、字母集或任何非空格的集合。</li>
 </ul>
+<p>(1) 转义字符  </p>
+<p>(2) 一些以 <code>'\'</code> 开头的特殊序列表示通常有用的预定义字符集，例如数字集、字母集或任何非空格的集合。</p>
 <table>
 <thead>
 <tr>
