@@ -1,0 +1,1133 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.7">
+    
+    
+      
+        <title>1.爬取天气数据 - Python 学习记录</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c772ddf0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Microsoft+YaHei:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Microsoft YaHei";--md-code-font-family:""}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Python 学习记录" class="md-header__button md-logo" aria-label="Python 学习记录" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python 学习记录
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.爬取天气数据
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      简介
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="md-tabs__link">
+        Python 基础
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98/" class="md-tabs__link">
+        数据分析
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        项目实战
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Python 学习记录" class="md-nav__button md-logo" aria-label="Python 学习记录" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Python 学习记录
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        简介
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Python 基础
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Python 基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Python 基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+        python基本语法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E4%B8%8E%E6%9D%A1%E4%BB%B6%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        循环语句与条件控制
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        函数
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E8%A3%85%E9%A5%B0%E5%99%A8/" class="md-nav__link">
+        装饰器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        模块
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E7%B1%BB/" class="md-nav__link">
+        类
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E6%A0%87%E5%87%86%E5%BA%93%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        标准库概览
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E9%94%99%E8%AF%AF%E5%92%8C%E5%BC%82%E5%B8%B8/" class="md-nav__link">
+        错误和异常
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        输入与输出
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        正则表达式
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python%E5%9F%BA%E7%A1%80/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%92%8C%E5%8C%85/" class="md-nav__link">
+        虚拟环境和包
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        数据分析
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据分析" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          数据分析
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E4%BF%9D%E5%AD%98/" class="md-nav__link">
+        数据读取与保存
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/" class="md-nav__link">
+        数据清洗
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86/" class="md-nav__link">
+        数据整理
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      <label class="md-nav__link" for="__nav_3_4">
+        数据可视化
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="数据可视化" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          数据可视化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/bar/" class="md-nav__link">
+        柱状图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/barh/" class="md-nav__link">
+        条形图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/bar_chart_race/" class="md-nav__link">
+        动态条形图/柱形图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/scatter/" class="md-nav__link">
+        散点图
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/pie/" class="md-nav__link">
+        饼图
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        项目实战
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="项目实战" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          项目实战
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      <label class="md-nav__link" for="__nav_4_1">
+        爬虫
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="爬虫" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          爬虫
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          1.爬取天气数据
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        1.爬取天气数据
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-robotstxt" class="md-nav__link">
+    1.1 robots.txt协议
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 简单爬虫
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 保存数据
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 保存数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-csv" class="md-nav__link">
+    1.3.1 csv方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#131-excel" class="md-nav__link">
+    1.3.1 excel 文件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%88%AC%E5%8F%96%E6%AD%8C%E6%9B%B2%E6%95%B0%E6%8D%AE-json/" class="md-nav__link">
+        2.爬取歌曲数据-json
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-robotstxt" class="md-nav__link">
+    1.1 robots.txt协议
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 简单爬虫
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 保存数据
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 保存数据">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-csv" class="md-nav__link">
+    1.3.1 csv方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#131-excel" class="md-nav__link">
+    1.3.1 excel 文件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1"><strong>天气数据爬取</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>要爬取的网站是<a href="http://www.weather.com.cn/">中国天气网</a>；爬取的内容是陕西省各地市七天内的数据；爬取时间为2021/4/30/8-30；注意：最高气温晚上会爬不到，返回的结果只有六天，不包括当日。获取数据使用<code>requests.get()</code>相关方法，解析数据利用<code>xpath</code>方法（除此外还有<code>re</code>方法、<code>Beautifulsoup</code>方法）。</p>
+<h2 id="11-robotstxt"><strong>1.1 <code>robots.txt</code>协议</strong><a class="headerlink" href="#11-robotstxt" title="Permanent link">&para;</a></h2>
+<p>Robots 协议是互联网爬虫的一项公认的道德规范，它的全称是“网络爬虫排除标准”（Robots exclusion protocol），这个协议用来告诉爬虫，哪些页面是可以抓取的，哪些不可以。</p>
+<p>查看方式为：<strong><code>网址+robots.txt</code></strong>，比如要查看“中国天气网（<a href="http://www.weather.com.cn/">http://www.weather.com.cn/</a>）”的协议：<a href="http://www.weather.com.cn/robots.txt">http://www.weather.com.cn/robots.txt</a>；结果为：</p>
+<div class="highlight"><pre><span></span><code>User-agent: *
+Allow: /
+</code></pre></div>
+<p>协议里最常出现的英文是Allow和Disallow，Allow代表可以被访问，Disallow代表禁止被访问；上面的结果表示可以使用任何代理，没有抓取延迟等限制。</p>
+<h2 id="12"><strong>1.2 简单爬虫</strong><a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># 导入模块</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span><span class="nn">time</span>
+
+<span class="c1"># 陕西省各城市对应天气编码</span>
+<span class="n">citys</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;西安&#39;</span><span class="p">:</span><span class="mi">101110101</span><span class="p">,</span><span class="s1">&#39;延安&#39;</span><span class="p">:</span><span class="mi">101110300</span><span class="p">,</span><span class="s1">&#39;榆林&#39;</span><span class="p">:</span><span class="mi">101110401</span><span class="p">,</span><span class="s1">&#39;铜川&#39;</span><span class="p">:</span><span class="mi">101111001</span><span class="p">,</span><span class="s1">&#39;商洛&#39;</span><span class="p">:</span><span class="mi">101110601</span><span class="p">,</span><span class="s1">&#39;安康&#39;</span><span class="p">:</span><span class="mi">101110701</span><span class="p">,</span><span class="s1">&#39;汉中&#39;</span><span class="p">:</span><span class="mi">101110801</span><span class="p">,</span><span class="s1">&#39;宝鸡&#39;</span><span class="p">:</span><span class="mi">101110901</span><span class="p">,</span><span class="s1">&#39;咸阳&#39;</span><span class="p">:</span><span class="mi">101110200</span><span class="p">,</span><span class="s1">&#39;渭南&#39;</span><span class="p">:</span><span class="mi">101110501</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">geturl</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39; 获取有效URL，并执行爬虫 &#39;&#39;&#39;</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">citys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;http://www.weather.com.cn/weather/</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">.shtml&#39;</span>
+        <span class="n">spider</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">spider</span>
+
+<span class="k">def</span> <span class="nf">spider</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; 爬取日期、天气、最高和最低气温 &#39;&#39;&#39;</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; WOW64) &#39;</span>
+                      <span class="s1">&#39;AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36&#39;</span>
+    <span class="p">}</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">city</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div[5]/div[1]/div[1]/div[1]/div[1]/a[3]/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s1">七日内天气：&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">))</span>
+    <span class="n">trs</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&quot;7d&quot;]/ul/li&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">trs</span><span class="p">:</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./h1/text()&#39;</span><span class="p">)</span>
+        <span class="n">wea</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./p[1]/text()&#39;</span><span class="p">)</span>
+        <span class="n">tem_max</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./p[2]/span/text()&#39;</span><span class="p">)</span>
+        <span class="n">tem_min</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./p[2]/i/text()&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">wea</span><span class="p">,</span> <span class="n">tem_max</span><span class="p">,</span> <span class="n">tem_min</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">geturl</span><span class="p">()</span>
+</code></pre></div>
+<p>输出结果为：</p>
+<div class="highlight"><pre><span></span><code><span class="o">------</span><span class="n">西安七日内天气</span><span class="err">：</span><span class="o">------</span>
+<span class="mi">30</span><span class="n">日</span><span class="err">（</span><span class="n">今天</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">31</span><span class="o">/</span><span class="mi">11</span><span class="err">℃</span>
+<span class="mi">1</span><span class="n">日</span><span class="err">（</span><span class="n">明天</span><span class="err">）</span> <span class="n">晴转多云</span> <span class="mi">26</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="mi">2</span><span class="n">日</span><span class="err">（</span><span class="n">后天</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">27</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="mi">3</span><span class="n">日</span><span class="err">（</span><span class="n">周一</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">23</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">4</span><span class="n">日</span><span class="err">（</span><span class="n">周二</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">21</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="mi">5</span><span class="n">日</span><span class="err">（</span><span class="n">周三</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">22</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">6</span><span class="n">日</span><span class="err">（</span><span class="n">周四</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">25</span><span class="o">/</span><span class="mi">17</span><span class="err">℃</span>
+<span class="o">------</span><span class="n">延安七日内天气</span><span class="err">：</span><span class="o">------</span>
+<span class="mi">30</span><span class="n">日</span><span class="err">（</span><span class="n">今天</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">22</span><span class="o">/</span><span class="mi">6</span><span class="err">℃</span>
+<span class="mi">1</span><span class="n">日</span><span class="err">（</span><span class="n">明天</span><span class="err">）</span> <span class="n">晴转阴</span> <span class="mi">25</span><span class="o">/</span><span class="mi">10</span><span class="err">℃</span>
+<span class="mi">2</span><span class="n">日</span><span class="err">（</span><span class="n">后天</span><span class="err">）</span> <span class="n">小雨</span> <span class="mi">21</span><span class="o">/</span><span class="mi">6</span><span class="err">℃</span>
+<span class="mi">3</span><span class="n">日</span><span class="err">（</span><span class="n">周一</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">24</span><span class="o">/</span><span class="mi">8</span><span class="err">℃</span>
+<span class="mi">4</span><span class="n">日</span><span class="err">（</span><span class="n">周二</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">17</span><span class="o">/</span><span class="mi">7</span><span class="err">℃</span>
+<span class="mi">5</span><span class="n">日</span><span class="err">（</span><span class="n">周三</span><span class="err">）</span> <span class="n">晴转阴</span> <span class="mi">17</span><span class="o">/</span><span class="mi">8</span><span class="err">℃</span>
+<span class="mi">6</span><span class="n">日</span><span class="err">（</span><span class="n">周四</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">20</span><span class="o">/</span><span class="mi">10</span><span class="err">℃</span>
+<span class="o">------</span><span class="n">榆林七日内天气</span><span class="err">：</span><span class="o">------</span>
+<span class="mi">30</span><span class="n">日</span><span class="err">（</span><span class="n">今天</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">18</span><span class="o">/</span><span class="mi">6</span><span class="err">℃</span>
+<span class="mi">1</span><span class="n">日</span><span class="err">（</span><span class="n">明天</span><span class="err">）</span> <span class="n">晴转多云</span> <span class="mi">22</span><span class="o">/</span><span class="mi">9</span><span class="err">℃</span>
+<span class="mi">2</span><span class="n">日</span><span class="err">（</span><span class="n">后天</span><span class="err">）</span> <span class="n">阴转晴</span> <span class="mi">20</span><span class="o">/</span><span class="mi">7</span><span class="err">℃</span>
+<span class="mi">3</span><span class="n">日</span><span class="err">（</span><span class="n">周一</span><span class="err">）</span> <span class="n">多云转晴</span> <span class="mi">26</span><span class="o">/</span><span class="mi">6</span><span class="err">℃</span>
+<span class="mi">4</span><span class="n">日</span><span class="err">（</span><span class="n">周二</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">19</span><span class="o">/</span><span class="mi">6</span><span class="err">℃</span>
+<span class="mi">5</span><span class="n">日</span><span class="err">（</span><span class="n">周三</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">17</span><span class="o">/</span><span class="mi">9</span><span class="err">℃</span>
+<span class="mi">6</span><span class="n">日</span><span class="err">（</span><span class="n">周四</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">22</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="o">------</span><span class="n">铜川七日内天气</span><span class="err">：</span><span class="o">------</span>
+<span class="mi">30</span><span class="n">日</span><span class="err">（</span><span class="n">今天</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">27</span><span class="o">/</span><span class="mi">8</span><span class="err">℃</span>
+<span class="mi">1</span><span class="n">日</span><span class="err">（</span><span class="n">明天</span><span class="err">）</span> <span class="n">晴转阴</span> <span class="mi">25</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">2</span><span class="n">日</span><span class="err">（</span><span class="n">后天</span><span class="err">）</span> <span class="n">小雨转多云</span> <span class="mi">20</span><span class="o">/</span><span class="mi">10</span><span class="err">℃</span>
+<span class="mi">3</span><span class="n">日</span><span class="err">（</span><span class="n">周一</span><span class="err">）</span> <span class="n">多云转阴</span> <span class="mi">22</span><span class="o">/</span><span class="mi">10</span><span class="err">℃</span>
+<span class="mi">4</span><span class="n">日</span><span class="err">（</span><span class="n">周二</span><span class="err">）</span> <span class="n">阴转晴</span> <span class="mi">21</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">5</span><span class="n">日</span><span class="err">（</span><span class="n">周三</span><span class="err">）</span> <span class="n">晴转多云</span> <span class="mi">20</span><span class="o">/</span><span class="mi">10</span><span class="err">℃</span>
+<span class="mi">6</span><span class="n">日</span><span class="err">（</span><span class="n">周四</span><span class="err">）</span> <span class="n">多云转阴</span> <span class="mi">22</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="o">------</span><span class="n">商洛七日内天气</span><span class="err">：</span><span class="o">------</span>
+<span class="mi">30</span><span class="n">日</span><span class="err">（</span><span class="n">今天</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">29</span><span class="o">/</span><span class="mi">8</span><span class="err">℃</span>
+<span class="mi">1</span><span class="n">日</span><span class="err">（</span><span class="n">明天</span><span class="err">）</span> <span class="n">晴转多云</span> <span class="mi">30</span><span class="o">/</span><span class="mi">11</span><span class="err">℃</span>
+<span class="mi">2</span><span class="n">日</span><span class="err">（</span><span class="n">后天</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">20</span><span class="o">/</span><span class="mi">9</span><span class="err">℃</span>
+<span class="mi">3</span><span class="n">日</span><span class="err">（</span><span class="n">周一</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">25</span><span class="o">/</span><span class="mi">14</span><span class="err">℃</span>
+<span class="mi">4</span><span class="n">日</span><span class="err">（</span><span class="n">周二</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">23</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">5</span><span class="n">日</span><span class="err">（</span><span class="n">周三</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">19</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">6</span><span class="n">日</span><span class="err">（</span><span class="n">周四</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">21</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="o">------</span><span class="n">安康七日内天气</span><span class="err">：</span><span class="o">------</span>
+<span class="mi">30</span><span class="n">日</span><span class="err">（</span><span class="n">今天</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">29</span><span class="o">/</span><span class="mi">14</span><span class="err">℃</span>
+<span class="mi">1</span><span class="n">日</span><span class="err">（</span><span class="n">明天</span><span class="err">）</span> <span class="n">晴转多云</span> <span class="mi">29</span><span class="o">/</span><span class="mi">16</span><span class="err">℃</span>
+<span class="mi">2</span><span class="n">日</span><span class="err">（</span><span class="n">后天</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">23</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="mi">3</span><span class="n">日</span><span class="err">（</span><span class="n">周一</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">29</span><span class="o">/</span><span class="mi">16</span><span class="err">℃</span>
+<span class="mi">4</span><span class="n">日</span><span class="err">（</span><span class="n">周二</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">28</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="mi">5</span><span class="n">日</span><span class="err">（</span><span class="n">周三</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">24</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">6</span><span class="n">日</span><span class="err">（</span><span class="n">周四</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">23</span><span class="o">/</span><span class="mi">15</span><span class="err">℃</span>
+<span class="o">------</span><span class="n">汉中七日内天气</span><span class="err">：</span><span class="o">------</span>
+<span class="mi">30</span><span class="n">日</span><span class="err">（</span><span class="n">今天</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">30</span><span class="o">/</span><span class="mi">15</span><span class="err">℃</span>
+<span class="mi">1</span><span class="n">日</span><span class="err">（</span><span class="n">明天</span><span class="err">）</span> <span class="n">晴转多云</span> <span class="mi">28</span><span class="o">/</span><span class="mi">17</span><span class="err">℃</span>
+<span class="mi">2</span><span class="n">日</span><span class="err">（</span><span class="n">后天</span><span class="err">）</span> <span class="n">小雨</span> <span class="mi">24</span><span class="o">/</span><span class="mi">14</span><span class="err">℃</span>
+<span class="mi">3</span><span class="n">日</span><span class="err">（</span><span class="n">周一</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">29</span><span class="o">/</span><span class="mi">14</span><span class="err">℃</span>
+<span class="mi">4</span><span class="n">日</span><span class="err">（</span><span class="n">周二</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">26</span><span class="o">/</span><span class="mi">15</span><span class="err">℃</span>
+<span class="mi">5</span><span class="n">日</span><span class="err">（</span><span class="n">周三</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">24</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="mi">6</span><span class="n">日</span><span class="err">（</span><span class="n">周四</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">24</span><span class="o">/</span><span class="mi">17</span><span class="err">℃</span>
+<span class="o">------</span><span class="n">宝鸡七日内天气</span><span class="err">：</span><span class="o">------</span>
+<span class="mi">30</span><span class="n">日</span><span class="err">（</span><span class="n">今天</span><span class="err">）</span> <span class="n">多云转晴</span> <span class="mi">30</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">1</span><span class="n">日</span><span class="err">（</span><span class="n">明天</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">30</span><span class="o">/</span><span class="mi">14</span><span class="err">℃</span>
+<span class="mi">2</span><span class="n">日</span><span class="err">（</span><span class="n">后天</span><span class="err">）</span> <span class="n">小雨转多云</span> <span class="mi">20</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">3</span><span class="n">日</span><span class="err">（</span><span class="n">周一</span><span class="err">）</span> <span class="n">多云转阴</span> <span class="mi">22</span><span class="o">/</span><span class="mi">10</span><span class="err">℃</span>
+<span class="mi">4</span><span class="n">日</span><span class="err">（</span><span class="n">周二</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">21</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">5</span><span class="n">日</span><span class="err">（</span><span class="n">周三</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">23</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">6</span><span class="n">日</span><span class="err">（</span><span class="n">周四</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">24</span><span class="o">/</span><span class="mi">14</span><span class="err">℃</span>
+<span class="o">------</span><span class="n">咸阳七日内天气</span><span class="err">：</span><span class="o">------</span>
+<span class="mi">30</span><span class="n">日</span><span class="err">（</span><span class="n">今天</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">30</span><span class="o">/</span><span class="mi">11</span><span class="err">℃</span>
+<span class="mi">1</span><span class="n">日</span><span class="err">（</span><span class="n">明天</span><span class="err">）</span> <span class="n">晴转多云</span> <span class="mi">25</span><span class="o">/</span><span class="mi">14</span><span class="err">℃</span>
+<span class="mi">2</span><span class="n">日</span><span class="err">（</span><span class="n">后天</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">23</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="mi">3</span><span class="n">日</span><span class="err">（</span><span class="n">周一</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">22</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="mi">4</span><span class="n">日</span><span class="err">（</span><span class="n">周二</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">21</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">5</span><span class="n">日</span><span class="err">（</span><span class="n">周三</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">21</span><span class="o">/</span><span class="mi">11</span><span class="err">℃</span>
+<span class="mi">6</span><span class="n">日</span><span class="err">（</span><span class="n">周四</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">26</span><span class="o">/</span><span class="mi">15</span><span class="err">℃</span>
+<span class="o">------</span><span class="n">渭南七日内天气</span><span class="err">：</span><span class="o">------</span>
+<span class="mi">30</span><span class="n">日</span><span class="err">（</span><span class="n">今天</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">32</span><span class="o">/</span><span class="mi">16</span><span class="err">℃</span>
+<span class="mi">1</span><span class="n">日</span><span class="err">（</span><span class="n">明天</span><span class="err">）</span> <span class="n">晴</span> <span class="mi">31</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="mi">2</span><span class="n">日</span><span class="err">（</span><span class="n">后天</span><span class="err">）</span> <span class="n">多云转阴</span> <span class="mi">26</span><span class="o">/</span><span class="mi">14</span><span class="err">℃</span>
+<span class="mi">3</span><span class="n">日</span><span class="err">（</span><span class="n">周一</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">25</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+<span class="mi">4</span><span class="n">日</span><span class="err">（</span><span class="n">周二</span><span class="err">）</span> <span class="n">阴转多云</span> <span class="mi">19</span><span class="o">/</span><span class="mi">12</span><span class="err">℃</span>
+<span class="mi">5</span><span class="n">日</span><span class="err">（</span><span class="n">周三</span><span class="err">）</span> <span class="n">多云</span> <span class="mi">26</span><span class="o">/</span><span class="mi">11</span><span class="err">℃</span>
+<span class="mi">6</span><span class="n">日</span><span class="err">（</span><span class="n">周四</span><span class="err">）</span> <span class="n">阴</span> <span class="mi">24</span><span class="o">/</span><span class="mi">13</span><span class="err">℃</span>
+</code></pre></div>
+<h2 id="13"><strong>1.3 保存数据</strong><a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<h3 id="131-csv"><strong>1.3.1 <code>csv</code>方法</strong><a class="headerlink" href="#131-csv" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 导入模块</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span><span class="nn">time</span><span class="o">,</span><span class="nn">csv</span>
+
+<span class="c1"># 陕西省各城市对应天气编码</span>
+<span class="n">citys</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;西安&#39;</span><span class="p">:</span><span class="mi">101110101</span><span class="p">,</span><span class="s1">&#39;延安&#39;</span><span class="p">:</span><span class="mi">101110300</span><span class="p">,</span><span class="s1">&#39;榆林&#39;</span><span class="p">:</span><span class="mi">101110401</span><span class="p">,</span><span class="s1">&#39;铜川&#39;</span><span class="p">:</span><span class="mi">101111001</span><span class="p">,</span><span class="s1">&#39;商洛&#39;</span><span class="p">:</span><span class="mi">101110601</span><span class="p">,</span>
+        <span class="s1">&#39;安康&#39;</span><span class="p">:</span><span class="mi">101110701</span><span class="p">,</span><span class="s1">&#39;汉中&#39;</span><span class="p">:</span><span class="mi">101110801</span><span class="p">,</span><span class="s1">&#39;宝鸡&#39;</span><span class="p">:</span><span class="mi">101110901</span><span class="p">,</span><span class="s1">&#39;咸阳&#39;</span><span class="p">:</span><span class="mi">101110200</span><span class="p">,</span><span class="s1">&#39;渭南&#39;</span><span class="p">:</span><span class="mi">101110501</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">geturl</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39; 获取有效URL，并执行爬虫 &#39;&#39;&#39;</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">citys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;http://www.weather.com.cn/weather/</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">.shtml&#39;</span>
+        <span class="n">spider</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">spider</span>
+
+<span class="k">def</span> <span class="nf">spider</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; 爬取日期、天气、最高和最低气温，并保存数据到 weather.csv &#39;&#39;&#39;</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; WOW64) &#39;</span>
+                      <span class="s1">&#39;AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36&#39;</span>
+    <span class="p">}</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">city</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div[5]/div[1]/div[1]/div[1]/div[1]/a[3]/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">trs</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&quot;7d&quot;]/ul/li&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;weather.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;gbk&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">trs</span><span class="p">:</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./h1/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">wea</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./p[1]/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">tem_max</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./p[2]/span/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">tem_min</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./p[2]/i/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">city</span><span class="p">,</span><span class="n">date</span><span class="p">,</span> <span class="n">wea</span><span class="p">,</span> <span class="n">tem_max</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">tem_min</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">geturl</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="131-excel"><strong>1.3.1 <code>excel</code> 文件</strong><a class="headerlink" href="#131-excel" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 导入模块</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="kn">import</span> <span class="nn">requests</span><span class="o">,</span><span class="nn">time</span><span class="o">,</span><span class="nn">openpyxl</span>
+
+<span class="c1"># 创建工作簿，用来保存数据</span>
+<span class="n">wb</span> <span class="o">=</span> <span class="n">openpyxl</span><span class="o">.</span><span class="n">Workbook</span><span class="p">()</span>
+<span class="n">sheet</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">active</span>
+<span class="n">sheet</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;weather&#39;</span>
+<span class="n">sheet</span><span class="p">[</span><span class="s1">&#39;A1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;城市&#39;</span>
+<span class="n">sheet</span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;日期&#39;</span>
+<span class="n">sheet</span><span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;天气&#39;</span>
+<span class="n">sheet</span><span class="p">[</span><span class="s1">&#39;D1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;气温&#39;</span>
+
+<span class="c1"># 陕西省各城市对应天气编码</span>
+<span class="n">citys</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;西安&#39;</span><span class="p">:</span><span class="mi">101110101</span><span class="p">,</span><span class="s1">&#39;延安&#39;</span><span class="p">:</span><span class="mi">101110300</span><span class="p">,</span><span class="s1">&#39;榆林&#39;</span><span class="p">:</span><span class="mi">101110401</span><span class="p">,</span><span class="s1">&#39;铜川&#39;</span><span class="p">:</span><span class="mi">101111001</span><span class="p">,</span><span class="s1">&#39;商洛&#39;</span><span class="p">:</span><span class="mi">101110601</span><span class="p">,</span><span class="s1">&#39;安康&#39;</span><span class="p">:</span><span class="mi">101110701</span><span class="p">,</span><span class="s1">&#39;汉中&#39;</span><span class="p">:</span><span class="mi">101110801</span><span class="p">,</span><span class="s1">&#39;宝鸡&#39;</span><span class="p">:</span><span class="mi">101110901</span><span class="p">,</span><span class="s1">&#39;咸阳&#39;</span><span class="p">:</span><span class="mi">101110200</span><span class="p">,</span><span class="s1">&#39;渭南&#39;</span><span class="p">:</span><span class="mi">101110501</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">geturl</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39; 获取有效URL，并执行爬虫 &#39;&#39;&#39;</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">citys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;http://www.weather.com.cn/weather/</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">.shtml&#39;</span>
+        <span class="n">spider</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">wb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;weather.xlsx&#39;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">spider</span>
+
+<span class="k">def</span> <span class="nf">spider</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; 爬取日期、天气、最高和最低气温，并保存数据到 weather.xlsx &#39;&#39;&#39;</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 10.0; WOW64) &#39;</span>
+                      <span class="s1">&#39;AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36&#39;</span>
+    <span class="p">}</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">city</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/html/body/div[5]/div[1]/div[1]/div[1]/div[1]/a[3]/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">trs</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//*[@id=&quot;7d&quot;]/ul/li&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">trs</span><span class="p">:</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./h1/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">wea</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./p[1]/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">tem_max</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./p[2]/span/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">tem_min</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./p[2]/i/text()&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">sheet</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">city</span><span class="p">,</span><span class="n">date</span><span class="p">,</span> <span class="n">wea</span><span class="p">,</span> <span class="n">tem_max</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">tem_min</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">geturl</span><span class="p">()</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../../../%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/pie/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              饼图
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../%E7%88%AC%E5%8F%96%E6%AD%8C%E6%9B%B2%E6%95%B0%E6%8D%AE-json/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              2.爬取歌曲数据-json
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="mailto:<chong_xuan_zhang@163.com>" target="_blank" rel="noopener" title="" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2 12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.65ce87ac.min.js"></script>
+      
+    
+  </body>
+</html>
